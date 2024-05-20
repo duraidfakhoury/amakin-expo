@@ -1,5 +1,8 @@
 import "./navBar.css"
-
+import { IoIosSearch } from "react-icons/io";
+import { AiOutlineAppstore } from "react-icons/ai";
+import { IoMdExpand } from "react-icons/io";
+import { IoNotificationsOutline } from "react-icons/io5";
 const Navbar = () => {
     return <div className="navBar">
         <div className="logo">
@@ -7,11 +10,11 @@ const Navbar = () => {
             <span>AMAKIN EXPO</span>
         </div>
         <div className="icons">
-            <img src="/search.svg" alt="" className="icon" />
-            <img src="/app.svg" alt="" className="icon" />
-            <img src="/expand.svg" alt="" className="icon" />
+            <div className="icon"><IoIosSearch/></div>
+            <div className="icon"><AiOutlineAppstore/></div>
+            <div className="icon"><IoMdExpand/></div>
             <div className="notifications">
-                 <img src="/notifications.svg" alt="" />
+            <div className="icon"><IoNotificationsOutline/></div>
                  <span>1</span>
             </div>
             <div className="user">

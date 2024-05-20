@@ -15,6 +15,9 @@
         display: flex;
         align-items: center;
         gap: 20px;
+        .icon{
+            font-size: 22px;
+        }
 
         .notifications{
             position: relative;
