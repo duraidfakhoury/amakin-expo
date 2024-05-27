@@ -1,9 +1,17 @@
 :root {
-    --main-color: #ddd;
-    --soft-color: white;
-  
-    --main-bg: #2a3447;
-    --soft-bg: #384256;
-    --dark-bg: #222b3c;
-  }
-  
+  --main-color: #000;
+  --soft-color: white;
+  --main-bg: #fff;
+  --soft-bg: #ddd;
+  --dark-bg: #bbb;
+  --overlay-color: rgba(0, 0, 0, 0.2); 
+}
+/* Dark theme variables */
+[data-theme="dark"] {
+  --main-color: #fff;
+  --soft-color: #ddd;
+  --main-bg: #2a3447;
+  --soft-bg: #384256;
+  --dark-bg: #222b3c;
+  --overlay-color: rgba(255, 255, 255, 0.2); 
+}

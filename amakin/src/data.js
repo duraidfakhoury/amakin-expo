@@ -48,7 +48,7 @@ export const menu = [
         {
           id: 1,
           title: "Settings",
-          url: "/",
+          url: "settings",
           icon: <IoSettingsOutline/>,
         },
       ],
