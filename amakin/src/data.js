@@ -41,7 +41,7 @@ export const menu = [
         {
           id: 2,
           title: "Profile",
-          url: "users/1",
+          url: "profile",
           icon: <CgProfile />
         },
       ],
@@ -529,14 +529,14 @@ export const menu = [
   
   export const singleUser = {
     id: 1,
-    title: "duraid fakhoury",
+    title: "Your Profile",
     img: "https://images.pexels.com/photos/17397364/pexels-photo-17397364.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
     info: {
-      username: "duraid16",
-      fullname: "Duraid Fakhoury",
-      email: "duraid16@gmail.com",
-      phone: "123 456 789",
-      status: "verified",
+      username: "",
+      fullname: "",
+      email: "",
+      phone: "",
+      status: "",
     },
     chart: {
       dataKeys: [

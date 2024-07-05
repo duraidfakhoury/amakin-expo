@@ -2,7 +2,7 @@ import {  Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } 
 import "./single.css" ;
 
 
-const Single = (props )=> {
+const Single = (props)=> {
     return <div className="single">
         <div className="view">
             <div className="info">
@@ -17,7 +17,7 @@ const Single = (props )=> {
                             item => (
                                 <div className="item" key={item[0]}>
                                     <span className="itemTitle">{item[0]}</span>
-                                    <span className="itemValue">{item[1]}</span>
+                                    <span className="itemValue">{}</span>
                                 </div>
                             )
                         )

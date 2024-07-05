@@ -5,11 +5,11 @@ import "./T_mainPage.css"
 import Footer from "../../../components/footer/Footer";
 
 
-const T_MainPage = ()=> {
+const T_MainPage = (props)=> {
     const Layout = () => {
         return (
           <div className="t_main">
-            <Navbar/>
+            <Navbar userName = {props.userData.name}/>
             <div className="container">
               <div className="menuContainer"><Menu/></div>
               <div className="contentContainer"><Outlet/></div>

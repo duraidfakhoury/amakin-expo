@@ -1,7 +1,7 @@
-@import "../../styles/variables.css" ;
+@import "../../../styles/variables.css";
 
 
-.single {
+.profile {
     display: flex;
     .view {
         flex: 1;

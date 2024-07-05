@@ -5,11 +5,12 @@ import "./mainPage.css"
 import Footer from "../../../components/footer/Footer";
 
 
-const MainPage = ()=> {
+const MainPage = (props)=> {
     const Layout = () => {
+      console.log(props.userData);
         return (
           <div className="main">
-            <Navbar/>
+            <Navbar userName = {props.userData.name}/>
             <div className="container">
               <div className="menuContainer"><Menu/></div>
               <div className="contentContainer"><Outlet/></div>

@@ -3,9 +3,9 @@ import "./T_user.css" ;
 
 import { singleUser } from "../../../data";
 
-const T_User = ()=> {
+const T_User = (props)=> {
     return <div className="t_user">
-        <Single {...singleUser}/>
+        <Single {...singleUser} userData={props.userData}/>
     </div>
 }
 

@@ -3,7 +3,7 @@ import { IoIosSearch } from "react-icons/io";
 import { AiOutlineAppstore } from "react-icons/ai";
 import { IoMdExpand } from "react-icons/io";
 import { IoNotificationsOutline } from "react-icons/io5";
-const Navbar = () => {
+const Navbar = (props) => {
     return <div className="navBar">
         <div className="logo">
             <img src="/logo.svg" alt="" />
@@ -19,7 +19,7 @@ const Navbar = () => {
             </div>
             <div className="user">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLM-WehJQ66IB98MKjKi4UhFhrrxk9ht75-KFuHAQnaI3_jqiDUS3rIPiNBM_jRlqA9Lc&usqp=CAU" alt="" />
-                <span>duraid</span>
+                <span>{props.userName}</span>
             </div>
         </div>
     </div>

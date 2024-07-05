@@ -5,7 +5,7 @@ import "./login.css";
 import { useState } from "react";
 import axios from "axios";
 
-const Login = () => {
+const Login = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,32 +16,18 @@ const Login = () => {
     const loginData = {
       email: email,
       password: password
-    }
+    };
     try {
-      const response = await axios.post(
-        'http://127.0.0.1:8000/api/user/store',
-        loginData,
-        {
-          headers: {
-            'Accept': 'application/json',
-          },
-        }
-      )
+      const response = await props.onLogin(loginData); // Await the promise
       const { status, data } = response;
       if (status === 200) {
-        console.log('Login successful:', data);
-        const { token, data: userData } = data;
-        
-        // Store the token in local storage
-        localStorage.setItem('token', token);
-        
+        const { data: userData } = data;
         // Check the user's role and navigate accordingly
         if (userData.role === 'admin') {
           navigate('/mainPage');
         } else if (userData.role === 'trademark_owner') {
           navigate('/T_mainPage');
         }
-        
         setEmail('');
         setPassword('');
       } else {
