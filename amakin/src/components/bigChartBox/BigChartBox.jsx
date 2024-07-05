@@ -86,9 +86,7 @@ const data = [
   {
     name: '28', size :1302 
   },
-  {
-    name: '29', size :1302
-  },
+ 
   {
     name: '30', size :1302
   },

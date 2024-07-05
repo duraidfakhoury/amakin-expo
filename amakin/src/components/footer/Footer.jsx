@@ -1,9 +1,9 @@
 import "./footer.css"
 
-const Footer = () => {
+const Footer = (props) => {
     return <div className="footer">
         <span>AMAKIN EXPO</span>
-        <span>Expo Owner Dashboard</span>
+        <span>{props.data}</span>
     </div>
 }
 

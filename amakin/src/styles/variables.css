@@ -1,10 +1,12 @@
 :root {
-  --main-color: #000;
+  --main-color: #2a3447;
   --soft-color: white;
   --main-bg: #fff;
-  --soft-bg: #ddd;
+  --soft-bg: #ddddddc4;
   --dark-bg: #bbb;
-  --overlay-color: rgba(0, 0, 0, 0.2); 
+  --accent-color: #FEAF04;
+  --accent-color-dark: #feaf04d0;
+  --overlay-color: rgba(0, 0, 0, 0.8); 
 }
 /* Dark theme variables */
 [data-theme="dark"] {
@@ -13,5 +15,7 @@
   --main-bg: #2a3447;
   --soft-bg: #384256;
   --dark-bg: #222b3c;
+  --accent-color: #FEAF04;
+  --accent-color-dark: #feaf04d0;
   --overlay-color: rgba(255, 255, 255, 0.2); 
 }

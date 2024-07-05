@@ -1,0 +1,70 @@
+@import "../../../styles/variables.css";
+
+.t_settings { 
+    padding: 15px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    .theme-option{
+        background-color: var(--soft-bg);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        padding: 30px ;
+        border-radius: 10px;
+        span{
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+    .logout-option{
+        background-color: var(--soft-bg);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        padding: 30px ;
+        border-radius: 10px;
+        span{
+            font-size: 20px;
+            font-weight: 600;
+        }
+        button{
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--main-color);
+            background: var(--main-bg);
+            border-radius: 12px;
+            border: 2px solid var(--main-bg);
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--overlay-color);
+        }
+    }
+    .changePassword-option{
+        background-color: var(--soft-bg);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        padding: 30px ;
+        border-radius: 10px;
+        span{
+            font-size: 20px;
+            font-weight: 600;
+        }
+        button{
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--main-color);
+            background: var(--main-bg);
+            border-radius: 12px;
+            border: 2px solid var(--main-bg);
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--overlay-color);
+        }
+    }
+}

@@ -3,6 +3,29 @@ import { CgProfile } from "react-icons/cg";
 import { PiUsersFourFill } from "react-icons/pi";
 import { AiOutlineProduct } from "react-icons/ai";
 import { IoSettingsOutline } from "react-icons/io5";
+import { IoMdPersonAdd } from "react-icons/io";
+export const headerNav = [
+ {
+  id : 1,
+  title : "Home",
+  url : "",
+ },
+ {
+  id : 2 ,
+  title : "Our Services",
+  url :"OurServices" 
+ },
+ {
+  id : 3 ,
+  title : "About us",
+  url : "AboutUs"
+ },
+ {
+  id : 4 ,
+  title : "Join us",
+  url : "JoinUs"
+ }
+]
 
 export const menu = [
     {
@@ -50,6 +73,12 @@ export const menu = [
           title: "Settings",
           url: "settings",
           icon: <IoSettingsOutline/>,
+        },
+        {
+          id: 2,
+          title: "Add Admin",
+          url: "signUp",
+          icon: <IoMdPersonAdd/>,
         },
       ],
     },
@@ -500,12 +529,12 @@ export const menu = [
   
   export const singleUser = {
     id: 1,
-    title: "John Doe",
+    title: "duraid fakhoury",
     img: "https://images.pexels.com/photos/17397364/pexels-photo-17397364.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
     info: {
-      username: "Johndoe99",
-      fullname: "John Doe",
-      email: "johndoe@gmail.com",
+      username: "duraid16",
+      fullname: "Duraid Fakhoury",
+      email: "duraid16@gmail.com",
       phone: "123 456 789",
       status: "verified",
     },
@@ -554,27 +583,27 @@ export const menu = [
     },
     activities: [
       {
-        text: "John Doe purchased Playstation 5 Digital Edition",
+        text: "for recent activites",
         time: "3 day ago",
       },
       {
-        text: "John Doe added 3 items into their wishlist",
+        text: "for recent activites",
         time: "1 week ago",
       },
       {
-        text: "John Doe purchased Sony Bravia KD-32w800",
+        text: "for recent activites",
         time: "2 weeks ago",
       },
       {
-        text: "John Doe reviewed a product",
+        text: "for recent activites",
         time: "1 month ago",
       },
       {
-        text: "John Doe added 1 items into their wishlist",
+        text: "for recent activites",
         time: "1 month ago",
       },
       {
-        text: "John Doe reviewed a product",
+        text: "for recent activites",
         time: "2 months ago",
       },
     ],

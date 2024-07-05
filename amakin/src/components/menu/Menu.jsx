@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import "./menu.css"
 import { menu } from "../../data";
+import { useState } from "react";
 
 const Menu = () => {
+    const [activeItem , setActiveItem ] = useState('');
+
     return <div className="menu">
         {
             menu.map((item)=>(
@@ -10,7 +13,11 @@ const Menu = () => {
                     <span className="title">{item.title}</span>
                     {
                         item.listItems.map((listItem)=>(
-                            <Link to = {listItem.url} className="listItem" key={listItem.id}>
+                            <Link to = {listItem.url} 
+                                    className={`listItem ${activeItem===listItem.url ? `active` : ``}`} 
+                                    key={listItem.id}
+                                    onClick={() => setActiveItem(listItem.url)}
+                                    >
                                 <div className="icon">{listItem.icon}</div>
                                 <span className="listItemTitle">{listItem.title}</span>
                             </Link>

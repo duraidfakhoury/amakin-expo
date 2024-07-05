@@ -1,4 +1,3 @@
-import { GridColDef } from "@mui/x-data-grid";
 import "./add.css" ;
 
 
@@ -6,7 +5,6 @@ const Add = (props) => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-
     }
     return <div className="add">
         <div className="model">
@@ -24,8 +22,9 @@ const Add = (props) => {
                         )
                     )
                 }
+                <button type="submit">Send</button>
             </form>
-            <button >Send</button>
+            
         </div>
 
     </div>

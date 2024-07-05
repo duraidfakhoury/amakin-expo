@@ -27,6 +27,10 @@
             }
 
         }
+        .listItem.active{
+            background-color: var(--soft-bg);
+            border-radius: 5px;
+        }
     }
 
 }

@@ -23,7 +23,7 @@
         justify-content: space-between;
 
         .chart{
-            .wrapper{
+            .progress_wrapper{
                 border: 3px solid var(--main-color);
                 border-radius: 14px;
             }

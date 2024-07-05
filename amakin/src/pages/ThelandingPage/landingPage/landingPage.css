@@ -1,0 +1,15 @@
+@import "../../../styles/variables.css";
+
+.landingPage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the landing page takes up at least the full viewport height */
+}
+
+.footer {
+    margin-top: auto; /* Push the footer to the bottom */
+    width: 100%;
+    background: var(--main-bg);
+    text-align: center; /* Center text in the footer */
+    padding: 10px; /* Add some padding for better appearance */
+}

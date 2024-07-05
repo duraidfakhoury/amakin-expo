@@ -21,7 +21,7 @@
         h1 {
             margin-bottom: 40px;
             font-size: 24px;
-            color: var(--soft-color);
+            color: var(--main-color);
         }
         .close{
             position: absolute;
@@ -52,21 +52,21 @@
                     
                 }
             }
-        }
-        button{
-            font-size: 18px;
-            position: absolute;
-            top: 420px;
-            right: 50px;
-            padding:5px 10px ;
-            border-radius: 6px;
-            border: 1px solid var(--soft-color);
-            color: var(--main-bg);
-            cursor: pointer;
-            &:hover{
-                background-color: var(--soft-color);
+            button{
+                margin-top: 25px;
+                width: 42%;
+                height: 55px;
+                background: var(--main-color);
+                border: none;
+                outline: none ;
+                box-shadow: 0 0 10px var(--overlay-color);
+                cursor: pointer;
+                font-size: 16px;
+                color: var(--main-bg);
+                font-weight: 700;
             }
         }
+        
 
     }
 }

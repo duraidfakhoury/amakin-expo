@@ -19,7 +19,7 @@ const ProgressBarBox = (props ) => {
                 height="30px"
                 borderRadius="10px"
                 labelColor="#2a3447"
-                className="wrapper"
+                className="progress_wrapper"
 
                 />
             </div>
