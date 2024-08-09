@@ -1,3 +1,125 @@
-.aboutUs{
-    
+@import '../../../styles/variables.css';
+
+.aboutUs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.about-info {
+    padding: 60px;
+    min-height: 86vh;
+    width: 50%;
+    color: var(--main-color);
+    background-color: var(--main-bg);
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.about-pic {
+    min-height: 86vh;
+    width: 50%;
+    background-color: var(--main-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contactUs {
+        flex-direction: column;
+    }
+
+    .about-info, .about-pic {
+        width: 100%;
+    }
+
+    .about-info h1 {
+        font-size: 2rem;
+    }
+
+    .about-info p {
+        font-size: 1rem;
+    }
+}
+
+
+
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background-size: cover;
+    color: var(--light-color);
+}
+
+.hero h1 {
+    font-size: 3rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+}
+
+.mission, .how-it-works {
+    padding: 20px 20px;
+    background-color: var(--main-bg);
+    color: var(--main-color);
+    
+    border-radius: 8px;
+}
+.how-it-works h2{
+    padding-bottom: 5px;
+}
+
+.steps {
+    display: flex;
+    gap: 20px;
+}
+.step{
+    border: 2px solid var(--soft-bg);
+    padding: 10px;
+    box-shadow: 0 0 8px var(--soft-bg);
+    border-radius: 8px;
+}
+
+.step h3 {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+.step p {
+    font-size: 1.2rem;
+}
+.mission p {
+    font-size: 1.2rem;
+}
+.cta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.cta button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: var(--accent-color);
+    background-color: var(--main-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cta button:hover {
+    background-color: var(--accent-color);
+    color: var(--light-color);
+}
+
+

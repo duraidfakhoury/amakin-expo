@@ -1,5 +1,5 @@
 @import "../../../styles/variables.css";
-.t_home {
+.event {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(4, 1fr);
@@ -13,7 +13,7 @@
     }
     .box1{
         grid-column: span 1 ;
-        grid-row: span 3;
+        grid-row: span 2;
     }
 
     .box4{
@@ -21,6 +21,10 @@
         grid-row: span 3;
     }
     .box7{
+        grid-column: span 1 ;
+        grid-row: span 2;
+    }
+    .box8{
         grid-column: span 2 ;
         grid-row: span 2;
     }

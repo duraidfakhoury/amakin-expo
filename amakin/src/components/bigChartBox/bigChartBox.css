@@ -4,6 +4,14 @@
     display: flex ;
     flex-direction: column;
     justify-content: space-between;
+    .bigChartBoxHeader{
+        display: flex;
+        justify-content: space-between;
+        button{
+            border-radius: 6px;
+        }
+        margin-bottom: 15px;
+    }
     .chart{
         width: 100%;
         height: 300px ;

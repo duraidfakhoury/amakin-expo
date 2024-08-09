@@ -40,7 +40,6 @@
                 flex-direction: column;
                 gap: 10px;
                 margin-bottom: 20px;
-
                 label {
                     font-size: 14px;
                 }
@@ -49,8 +48,91 @@
                     outline: none;
                     background-color: transparent;
                     border: 2px solid var(--soft-bg);
-                    
+                    color: var(--main-color); 
                 }
+                .custom-file-upload {
+                    width: 200px;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    cursor: pointer;
+                    background-color: var(--main-bg);
+                    color: var(--main-color);
+                    border-radius: 4px;
+                    border: 1px solid var(--soft-bg);
+
+                  }
+                  .file-name {
+                    margin-left: 10px;
+                    color: var(--accent-color);
+                  }
+                  
+                  .custom-file-upload:hover {
+                    background-color: var(--soft-bg);
+                  }
+                  .custom-select-container {
+                    width: 200px;
+                    font-family: Arial, sans-serif;
+                  }
+                  
+                  /* Customize the control (input area) */
+                  .custom-select__control {
+                    background-color: var(--main-bg);
+                    border: 1px solid var(--soft-bg);
+                    border-radius: 8px;
+                    padding: 5px;
+                    box-shadow: none;
+                  }
+                  
+                  /* Customize the placeholder text */
+                  .custom-select__placeholder {
+                    color: #888;
+                  }
+                  
+                  /* Customize the individual options in the dropdown */
+                  .custom-select__option {
+                    background-color: var(--main-bg);
+                    color: var(--main-color);
+                    padding: 10px;
+                    border-bottom: 1px solid var(--soft-bg);
+                  }
+                  .custom-select__menu {
+                    background-color: var(--main-bg);
+                    /* Remove box shadow if present */
+                    box-shadow: none;
+                  }
+                  /* Highlight the selected option */
+                  .custom-select__option--is-selected {
+                    background-color: var(--main-bg);
+                    color: var(--main-color);
+                  }
+                  
+                  /* Highlight the focused option */
+                  .custom-select__option--is-focused {
+                    background-color: var(--soft-bg);
+                    color: var(--main-color);
+                  }
+                  
+                  /* Customize the multi-value container (selected items) */
+                  .custom-select__multi-value {
+                    background-color: var(--soft-bg);
+                    border-radius: 4px;
+                    padding: 3px;
+                    margin: 2px;
+                    
+                  }
+                  
+                  /* Customize the text of selected items */
+                  .custom-select__multi-value__label {
+                    color: var(--accent-color);
+                  }
+                  
+                  /* Customize the remove button of selected items */
+                  .custom-select__multi-value__remove {
+                    color: var(--accent-color);
+                    cursor: pointer;
+                  }
+                
             }
             button{
                 margin-top: 25px;

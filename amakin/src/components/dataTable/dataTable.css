@@ -1,4 +1,3 @@
-@import "../../styles/variables.css" ;
 .dataTable{
     .action{
         display: flex;
@@ -22,5 +21,8 @@
 
     .MuiDataGrid-toolbarContainer{
         flex-direction: row-reverse;
+    }
+    .MuiSvgIcon-root{
+        box-shadow: none;
     }
 }

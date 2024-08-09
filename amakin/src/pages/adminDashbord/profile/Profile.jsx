@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import "./profile.css";
 import axios from "axios";
+import "./profile.css";
 
 const Profile = (props) => {
     const [profileData, setProfileData] = useState(null);
@@ -36,26 +36,35 @@ const Profile = (props) => {
             <div className="view">
                 <div className="info">
                     <div className="topInfo">
-                        {profileData.img && <img src={profileData.img} alt="" />}
+                        {/* Render image only if profileData and img exist */}
+                        {profileData && profileData.img && <img src={profileData.img} alt="Profile" />}
                         <h1>Your Profile</h1>
-                        <button>update</button>
+                        <button>Update</button>
                     </div>
                     <div className="details">
                         <div className="item">
                             <span className="itemTitle">Full Name: </span>
-                            <span className="itemValue">{profileData ? profileData.name : "Loading..."}</span>
+                            <span className="itemValue">
+                                {profileData ? profileData.name : "Loading..."}
+                            </span>
                         </div>
                         <div className="item">
                             <span className="itemTitle">Email: </span>
-                            <span className="itemValue">{profileData ? profileData.email : "Loading..."}</span>
+                            <span className="itemValue">
+                                {profileData ? profileData.email : "Loading..."}
+                            </span>
                         </div>
                         <div className="item">
                             <span className="itemTitle">Phone Number: </span>
-                            <span className="itemValue">{profileData ? profileData.phone : "Loading..."}</span>
+                            <span className="itemValue">
+                                {profileData ? profileData.phone : "Loading..."}
+                            </span>
                         </div>
                         <div className="item">
                             <span className="itemTitle">Status: </span>
-                            <span className="itemValue">{profileData ? (profileData.accepted_by_admin ? "Verified" : "Not Verified") : "Loading..."}</span>
+                            <span className="itemValue">
+                                {profileData ? (profileData.accepted_by_admin ? "Verified" : "Not Verified") : "Loading..."}
+                            </span>
                         </div>
                         {error && <div className="error">{error}</div>}
                     </div>
@@ -63,10 +72,8 @@ const Profile = (props) => {
                 <hr />
                 {props.chart && (
                     <div className="chart">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ResponsiveContainer width="100%" height={300}>
                             <LineChart
-                                width={500}
-                                height={300}
                                 data={props.chart.data}
                                 margin={{
                                     top: 5,

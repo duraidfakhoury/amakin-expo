@@ -4,6 +4,8 @@ import { PiUsersFourFill } from "react-icons/pi";
 import { AiOutlineProduct } from "react-icons/ai";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdPersonAdd } from "react-icons/io";
+import { IoCreateOutline } from "react-icons/io5";
+import { BiCategoryAlt } from "react-icons/bi";
 export const headerNav = [
  {
   id : 1,
@@ -12,8 +14,8 @@ export const headerNav = [
  },
  {
   id : 2 ,
-  title : "Our Services",
-  url :"OurServices" 
+  title : "Contact Us",
+  url :"ContactUs" 
  },
  {
   id : 3 ,
@@ -58,9 +60,33 @@ export const menu = [
         },
         {
           id: 2,
-          title: "Products",
-          url: "products",
+          title: "Events",
+          url: "events",
           icon: <AiOutlineProduct/>,
+        },
+        {
+          id: 3,
+          title: "Categories",
+          url: "categories",
+          icon: <BiCategoryAlt/>,
+        },
+      ],
+    },
+    {
+      id: 3,
+      title: "Actions",
+      listItems: [
+        {
+          id: 1,
+          title: "Create Event",
+          url: "createEvent",
+          icon: <IoCreateOutline/>,
+        },
+        {
+          id: 2,
+          title: "Add Admin",
+          url: "signUp",
+          icon: <IoMdPersonAdd/>,
         },
       ],
     },
@@ -74,11 +100,79 @@ export const menu = [
           url: "settings",
           icon: <IoSettingsOutline/>,
         },
+      ],
+    },
+  ];
+  export const Tmenu = [
+    {
+      id: 1,
+      title: "main",
+      listItems: [
+        {
+          id: 1,
+          title: "Homepage",
+          url: "/TmainPage",
+          icon: <GoHome />,
+        },
+        {
+          id: 2,
+          title: "Profile",
+          url: "profile",
+          icon: <CgProfile />
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "lists",
+      listItems: [
+        {
+          id: 1,
+          title: "Products",
+          url: "products",
+          icon: <AiOutlineProduct/>,
+        },
+        {
+          id: 1,
+          title: "Representatives",
+          url: "representatives",
+          icon: <AiOutlineProduct/>,
+        },
+        {
+          id: 2,
+          title: "Events",
+          url: "events",
+          icon: <PiUsersFourFill/>,
+        },
+      ],
+    },
+    {
+      id: 3,
+      title: "Actions",
+      listItems: [
+        {
+          id: 1,
+          title: "Participate",
+          url: "participate",
+          icon: <IoCreateOutline/>,
+        },
         {
           id: 2,
           title: "Add Admin",
           url: "signUp",
           icon: <IoMdPersonAdd/>,
+        },
+      ],
+    },
+    {
+      id: 4,
+      title: "Maintenance",
+      listItems: [
+        {
+          id: 1,
+          title: "Settings",
+          url: "settings",
+          icon: <IoSettingsOutline/>,
         },
       ],
     },
@@ -119,20 +213,6 @@ export const menu = [
       username: "Juan Harrington",
       email: "juan@gmail.com",
       amount: "both N.7",
-    },
-    {
-      id: 6,
-      img: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      username: "Augusta McGee",
-      email: "augusta@gmail.com",
-      amount: "both N.23",
-    },
-    {
-      id: 7,
-      img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      username: "Angel Thomas",
-      email: "angel@gmail.com",
-      amount: "both N.11",
     },
   ];
   

@@ -1,0 +1,30 @@
+@import "../../styles/variables.css";
+
+.detailsBox {
+    h1{
+        margin-bottom: 50px;
+    }
+    .list{
+        display: flex;
+        flex-direction: column;
+        .listItem{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            color: var(--main-color);
+            .itemTitle{
+                font-weight: bold;
+                font-size: 20px;
+                white-space: nowrap;
+            }
+            .itemValue{
+                flex-grow: 1;
+                word-wrap: break-word; 
+                word-break: break-all;
+                font-weight: 500;
+                font-size: 18px;
+            }
+        }
+    }
+}

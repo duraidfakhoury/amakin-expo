@@ -1,0 +1,16 @@
+
+.events {
+    display: flex ;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 87.5vh;
+    .info{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px
+        }
+        .table{
+            margin-bottom: 25px;
+        }
+        
+    }

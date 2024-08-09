@@ -1,6 +1,6 @@
 import { ThemeContext } from "../../../context/ThemeContext";
 import { useContext, useState } from "react";
-import "./T_settings.css";
+import "./Tsettings.css";
 import "../../../styles/variables.css";
 import ToggleSlider from "../../../components/toggleSlider/ToogleSlider";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ const changePassword_columns =[
 
 ]
 
-const T_Settings = () => {
+const TSettings = () => {
   
   const navigate = useNavigate();
   const { toggleTheme, theme } = useContext(ThemeContext);
@@ -51,4 +51,4 @@ const T_Settings = () => {
   );
 };
 
-export default T_Settings;
+export default TSettings;

@@ -7,25 +7,28 @@ import LandingPage from "./pages/ThelandingPage/landingPage/LandingPage";
 import Login from "./pages/ThelandingPage/Login/login";
 import SignUp from "./pages/adminDashbord/signUp/SignUp";
 import JoinUs from "./pages/ThelandingPage/JoinUs/JoinUs";
-import OurServices from "./pages/ThelandingPage/ourServices/OurServices";
+import ContactUs from "./pages/ThelandingPage/contactUs/ContactUs";
 import AboutUs from "./pages/ThelandingPage/aboutUs/AboutUs";
 import MainPage from "./pages/adminDashbord/mainPage/MainPage";
 import Home from "./pages/adminDashbord/home/Home";
-import Products from './pages/adminDashbord/products/Products';
-import Product from "./pages/adminDashbord/product/Product";
+import Events from './pages/adminDashbord/events/Events';
+import Event from "./pages/adminDashbord/event/Event";
 import Users from "./pages/adminDashbord/users/Users";
 import User from "./pages/adminDashbord/user/User";
 import Settings from "./pages/adminDashbord/settings/Settings";
-import T_MainPage from "./pages/tradeMark_Dashboard/T_mainPage/T_MainPage";
-import T_Home from "./pages/tradeMark_Dashboard/T_home/T_Home";
-import T_Products from './pages/tradeMark_Dashboard/T_products/T_Products';
-import T_Product from "./pages/tradeMark_Dashboard/T_product/T_Product";
-import T_Users from "./pages/tradeMark_Dashboard/T_users/T_Users";
-import T_User from "./pages/tradeMark_Dashboard/T_user/T_User";
-import T_Settings from "./pages/tradeMark_Dashboard/T_settings/T_Settings";
-import Single from "./components/single/Single";
+import TMainPage from "./pages/tradeMark_Dashboard/T_mainPage/TMainPage";
+import THome from "./pages/tradeMark_Dashboard/T_home/THome";
+import TProducts from './pages/tradeMark_Dashboard/T_products/TProducts';
+import TProduct from "./pages/tradeMark_Dashboard/T_product/TProduct";
+import TRepresentatives from "./pages/tradeMark_Dashboard/T_Representatives/TRepresentatives";
+import TUser from "./pages/tradeMark_Dashboard/T_user/TUser";
+import TSettings from "./pages/tradeMark_Dashboard/T_settings/TSettings";
+import TEvents from "./pages/tradeMark_Dashboard/T_events/TEvents";
 import Profile from "./pages/adminDashbord/profile/Profile";
 import { singleUser } from "./data";
+import CreateEvente from "./pages/adminDashbord/createEvent/CreateEvente";
+import TParticipate from "./pages/tradeMark_Dashboard/T_patricipate/TParticipate";
+import Categories from "./pages/adminDashbord/categories/Categories";
 function App() {
   const {theme} = useContext(ThemeContext);
   const [loggedData , setLoggedData] = useState(); 
@@ -42,7 +45,7 @@ function App() {
       const {status , data} =  response;
       if(status === 200){
         const {token , data : userData} = data;
-        localStorage.setItem('token',token);
+        localStorage.setItem('token',token.accessToken);
         setLoggedData(userData);
         return response ;
       }
@@ -65,8 +68,8 @@ function App() {
           element :<JoinUs/>
         },
         {
-          path : "OurServices" ,
-          element : <OurServices />
+          path : "ContactUs" ,
+          element : <ContactUs />
         },
         {
           path : "AboutUs" ,
@@ -93,16 +96,20 @@ function App() {
             element: <Users />,
           },
           {
-            path: "products",
-            element: <Products />,
+            path: "events",
+            element: <Events />,
+          },
+          {
+            path: "categories",
+            element: <Categories />,
           },
           {
             path: "users/:id",
             element: <User />,
           },
           {
-            path: "products/:id",
-            element: <Product />,
+            path: "Event/:eventId",
+            element: <Event />,
           },
           {
             path : "settings",
@@ -112,40 +119,52 @@ function App() {
             path : "SignUp",
             element :<SignUp />
           },
+          {
+            path : "createEvent",
+            element : <CreateEvente/>
+          }
         ]
     }
     ,{
-      path : "/T_mainPage",
-      element : <T_MainPage userData={loggedData}/>,
+      path : "/TmainPage",
+      element : <TMainPage userData={loggedData}/>,
       children :
         [
           {
             path: "",
-            element: <T_Home />,
+            element: <THome />,
           },
           {
             path: "profile",
-            element: <T_User userData={loggedData} />,
+            element: <TUser userData={loggedData} />,
           },
           {
-            path: "users",
-            element: <T_Users />,
+            path: "events",
+            element: <TEvents />,
+          },
+          {
+            path: "representatives",
+            element: <TRepresentatives />,
           },
           {
             path: "products",
-            element: <T_Products />,
+            element: <TProducts />,
           },
           {
             path: "users/:id",
-            element: <T_User />,
+            element: <TUser />,
           },
           {
-            path: "products/:id",
-            element: <T_Product />,
+            path: "products/:productId",
+            element: <TProduct />,
           },
           {
             path : "settings",
-            element :  <T_Settings />
+            element :  <TSettings />
+          },
+          {
+            path : "participate",
+            element : <TParticipate/>
           }
         ]
     }

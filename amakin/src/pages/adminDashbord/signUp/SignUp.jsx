@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import AlertModel from "../../../components/alertModel/AlertModel";  // Adjust the import path as necessary
 import "./signUp.css";
+import InputField from "../../../components/inputField/InputField";
 
 const SignUp = () => {
   const [userName, setUserName] = useState('');
@@ -90,59 +91,44 @@ const SignUp = () => {
         </div>
         <form className="signForm" onSubmit={handleSubmit}>
           <div className="signformItem">
-            <div className="inputForm">
-              <input
-                type="text"
-                placeholder="User Name"
-                required
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            </div>
+            <InputField
+            placeholder='User Name'
+            type="text"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            />
           </div>
           <div className="signformItem">
-            <div className="inputForm">
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+            <InputField
+            placeholder='Password'
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <div className="signformItem">
-            <div className="inputForm">
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                required
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
+            <InputField
+            placeholder='Confirm Paaword'
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            />
           </div>
           <div className="signformItem">
-            <div className="inputForm">
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                required
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
+            <InputField
+            placeholder='Phone Number'
+            type="text"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            />
           </div>
           <div className="signformItem">
-            <div className="inputForm">
-              <input
-                type="email"
-                placeholder="Email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+            <InputField
+            placeholder='Email'
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           {error && <div className="error">{error}</div>}          
           <button type="submit">Send</button>

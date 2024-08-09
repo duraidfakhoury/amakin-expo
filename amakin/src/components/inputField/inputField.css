@@ -1,0 +1,92 @@
+/* inputField.css */
+@import '../../styles/variables.css';
+
+.inputField .customTextField,
+.inputField .customDatePicker {
+  margin: 10px;
+  width: 100%;
+}
+
+/* Label Styles */
+.inputField .customTextField .MuiInputLabel-root,
+.inputField .customDatePicker .MuiInputLabel-root {
+  color: var(--main-color); /* Change label color */
+}
+
+.inputField .customTextField .MuiInputLabel-root.Mui-focused,
+.inputField .customDatePicker .MuiInputLabel-root.Mui-focused {
+  color: var(--main-color); /* Change label color when focused */
+}
+
+/* Outlined Input Styles */
+.inputField .customTextField .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline,
+.inputField .customDatePicker .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: var(--main-color); /* Change border color */
+}
+
+.inputField .customTextField .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
+.inputField .customDatePicker .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: var(--main-color); /* Change border color on hover */
+}
+
+.inputField .customTextField .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline,
+.inputField .customDatePicker .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--accent-color); /* Change border color when focused */
+}
+
+/* Placeholder and Input Text Styles */
+.inputField .customTextField .MuiOutlinedInput-input::placeholder,
+.inputField .customDatePicker .MuiOutlinedInput-input::placeholder {
+  color: var(--main-color); /* Change placeholder text color */
+}
+
+.inputField .customTextField .MuiOutlinedInput-input,
+.inputField .customDatePicker .MuiOutlinedInput-input {
+  color: var(--main-color); /* Change input text color */
+}
+
+/* General styles for the calendar popup */
+.customDatePicker .MuiPaper-root.MuiPickersLayout-root{
+  background-color: var(--accent-color); /* Background color of the header */
+  color: var(--accent-color);
+}
+.customDatePicker .MuiDateCalendar-root {
+  background-color: var(--accent-color); /* Background color of the header */
+  color: var(--accent-color); /* Text color of the header */
+}
+
+.customDatePicker .MuiPickersArrowSwitcher-root.MuiButtonBase-root {
+  background-color: var(--main-bg); /* Default background color for days */
+  color: var(--main-color); /* Default text color for days */
+}
+
+.customDatePicker .MuiPickersDay-root:hover {
+  background-color: var(--dark-bg); /* Hover background color for days */
+}
+
+.customDatePicker .MuiPickersDay-root.Mui-selected {
+  background-color: var(--accent-color); /* Selected day background color */
+  color: white; /* Selected day text color */
+}
+
+.customDatePicker .MuiPickersDay-root.Mui-selected:hover {
+  background-color: var(--accent-color); /* Hover background color for selected day */
+}
+
+/* Additional customization */
+.customDatePicker .MuiIconButton-root {
+  color: var(--main-color); /* Color of the navigation icons */
+}
+
+.customDatePicker .MuiTypography-root {
+  color: var(--main-color); /* Color of the month/year text */
+}
+
+
+/* IconButton Styles */
+.customIconButton {
+  color: var(--main-color);
+  background-color: var(--main-bg);
+  border-radius: 50%;
+  box-shadow: none;
+}

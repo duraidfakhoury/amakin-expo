@@ -4,6 +4,7 @@ import { FaLock } from "react-icons/fa";
 import "./login.css";
 import { useState } from "react";
 import axios from "axios";
+import InputField from "../../../components/inputField/InputField";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Login = (props) => {
         if (userData.role === 'admin') {
           navigate('/mainPage');
         } else if (userData.role === 'trademark_owner') {
-          navigate('/T_mainPage');
+          navigate('/TmainPage');
         }
         setEmail('');
         setPassword('');
@@ -51,27 +52,23 @@ const Login = (props) => {
         <img src="../undraw_login_re_4vu2.svg" alt="" />
         <form onSubmit={handleSubmit}>
           <div className="inputbox">
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <FaUser className="icon" />
+          <InputField
+            placeholder='Email'
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           </div>
           <div className="inputbox">
-            <input
-              type="password"
-              placeholder="Password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <FaLock className="icon" />
+          <InputField
+            placeholder='Password'
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
           </div>
           {error && <div className="error">{error}</div>}
-          <button type="submit">Send</button>
+          <button className="loginSubmit" type="submit">Send</button>
         </form>
       </div>
     </div>

@@ -1,6 +1,5 @@
 @import "../../../styles/variables.css" ;
-
-.products {
+.Representatives {
     display: flex ;
     flex-direction: column;
     gap: 20px;
@@ -8,7 +7,7 @@
         display: flex;
         justify-content: space-between;
         button{
-            background: var(--main-bg);
+            background:var(--accent-color);
             border-radius: 8px;
             font-size: 20px;
             color: var(--main-color);
@@ -17,11 +16,20 @@
             cursor: pointer;
 
             &:hover{
-                background: var(--soft-bg);
-                color: var(--soft-color);
-
+                background: var(--accent-color-dark);
             }
         }
+    }
+    .table{
         
+        margin-bottom: 38px;
+    }
+}
+.buttons{
+    .delete_btn{
+        color: red;
+    }
+    .edit_btn{
+        color: rgb(22, 184, 22);
     }
 }

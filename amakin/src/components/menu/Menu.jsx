@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import "./menu.css"
-import { menu } from "../../data";
 import { useState } from "react";
 
-const Menu = () => {
+const Menu = (props) => {
     const [activeItem , setActiveItem ] = useState('');
 
     return <div className="menu">
         {
-            menu.map((item)=>(
+            props.menu.map((item)=>(
                 <div className="item" key={item.id}>
                     <span className="title">{item.title}</span>
                     {

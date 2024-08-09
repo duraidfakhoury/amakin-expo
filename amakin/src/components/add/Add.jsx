@@ -1,33 +1,109 @@
-import "./add.css" ;
+import React, { useState } from "react";
+import Select from "react-select";
+import "./add.css";
 
+const Add = ({ slug, columns, onAdd, setOpen, categories, initialData = {} }) => {
+  // Ensure categories is initialized to an array
+  const [formValues, setFormValues] = useState({
+    ...initialData,
+    categories: initialData.categories || [], // Default to empty array if undefined
+  });
+  
+  const [fileNames, setFileNames] = useState({});
 
-const Add = (props) => {
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: files ? files[0] : value,
+    }));
 
-    const handleSubmit = (e) =>{
-        e.preventDefault();
+    if (files) {
+      setFileNames((prevNames) => ({
+        ...prevNames,
+        [name]: files[0].name,
+      }));
     }
-    return <div className="add">
-        <div className="model">
-            <span className="close" onClick={()=>props.setOpen(false)}>X</span>
-            <h1>Add New {props.slug}</h1>
-            <form onSubmit={handleSubmit}>
-                {
-                    props.columns.filter(item=>item.field!=="id"&& item.field!=="img")
-                    .map(
-                        column =>(
-                            <div className="item">
-                                <label >{column.headerName}</label>
-                                <input type={column.type} placeholder={column.field} />
-                            </div>
-                        )
-                    )
-                }
-                <button type="submit">Send</button>
-            </form>
-            
-        </div>
+  };
 
+  const handleCategoryChange = (selectedOptions) => {
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      categories: selectedOptions ? selectedOptions.map(option => option.value) : [],
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Filter out fields that are not part of the columns prop
+    const filteredValues = Object.fromEntries(
+      Object.entries(formValues).filter(([key]) =>
+        columns.some(column => column.field === key)
+      )
+    );
+
+    onAdd(filteredValues);
+  };
+
+  return (
+    <div className="add">
+      <div className="model">
+        <span className="close" onClick={() => setOpen(false)}>X</span>
+        <h1>{slug}</h1>
+        <form onSubmit={handleSubmit}>
+          {columns.map(column => (
+            <div className="item" key={column.field}>
+              <label>{column.headerName}</label>
+              {column.type === "dropdown" ? (
+                <Select
+                  isMulti
+                  name={column.field}
+                  options={categories.map(category => ({
+                    value: category.id,
+                    label: category.name,
+                  }))}
+                  value={categories.filter(category => 
+                    formValues.categories.includes(category.id)).map(category => ({
+                      value: category.id,
+                      label: category.name,
+                    }))}
+                  className="custom-select-container"
+                  classNamePrefix="custom-select"
+                  onChange={handleCategoryChange}
+                />
+              ) : column.type === "file" ? (
+                <div key={column.field} className="form-group">
+                  <input
+                    type="file"
+                    id={column.field}
+                    name={column.field}
+                    onChange={handleChange}
+                    style={{ display: 'none' }}
+                  />
+                  <label htmlFor={column.field} className="custom-file-upload">
+                    Choose File
+                  </label>
+                  {fileNames[column.field] && (
+                    <span className="file-name">{fileNames[column.field]}</span>
+                  )}
+                </div>
+              ) : (
+                <input
+                  type={column.type}
+                  name={column.field}
+                  placeholder={column.field}
+                  value={formValues[column.field] || ""}
+                  onChange={handleChange}
+                />
+              )}
+            </div>
+          ))}
+          <button type="submit">Send</button>
+        </form>
+      </div>
     </div>
-}
+  );
+};
 
-export default Add ;
+export default Add;

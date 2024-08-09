@@ -6,7 +6,6 @@
   --dark-bg: #bbb;
   --accent-color: #FEAF04;
   --accent-color-dark: #feaf04d0;
-  --overlay-color: rgba(0, 0, 0, 0.8); 
 }
 /* Dark theme variables */
 [data-theme="dark"] {
@@ -17,5 +16,5 @@
   --dark-bg: #222b3c;
   --accent-color: #FEAF04;
   --accent-color-dark: #feaf04d0;
-  --overlay-color: rgba(255, 255, 255, 0.2); 
+  --shadow-color: rgba(255, 255, 255, 0.2); 
 }

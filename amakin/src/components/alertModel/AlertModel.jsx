@@ -7,7 +7,9 @@ const AlertModel = ({ show, handleClose, title, children }) => {
       <div className={showHideClassName}>
         <section className="modal-main">
           <h2>{title}</h2>
-          {children}
+          <div className="modal-children">
+            {children}
+          </div>
           <button onClick={handleClose}>Close</button>
         </section>
       </div>

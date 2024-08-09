@@ -10,7 +10,7 @@
 .signUpDesc {
     flex: 1;
     height: 100%;
-    border-right: 3px solid var(--overlay-color);
+    border-right: 3px solid var(--shadow-color);
     display: flex;
     flex-direction: column;
     img{
@@ -46,7 +46,7 @@
     flex: 1;
     height: 90%;
     border-radius: 12px;
-    box-shadow: 0 0 10px var(--overlay-color);
+    box-shadow: 0 0 10px var(--soft-bg);
 }
 
 .formTitle {
@@ -67,33 +67,9 @@
 
 .signformItem {
     width: 75%;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
-
-.inputForm {
-    width: 100%;
-}
-
-.inputForm input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    outline: none;
-    border: 2px solid var(--overlay-color);
-    border-radius: 40px;
-    color: var(--main-color);
-    font-size: 16px;
-    padding: 20px 45px 20px 20px;
-}
-
-.inputForm input::placeholder {
-    color: var(--main-color);
-}
-
-.inputForm input:focus {
-    border: 2px solid var(--accent-color);
-}
 
 .error {
     background-color: var(--accent-color);
@@ -111,7 +87,7 @@ button {
     background-color: var(--accent-color);
     font-size: 18px;
     border: 2px solid var(--accent-color);
-    border-radius: 16px;
+    border-radius: 6px;
     padding: 10px 20px;
     margin-top: 10px;
     box-shadow: 0 0 5px var(--overlay-color);

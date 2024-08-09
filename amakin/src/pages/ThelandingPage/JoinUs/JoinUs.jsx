@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import AlertModel from "../../../components/alertModel/AlertModel";  // Adjust the import path as necessary
 import "./joinUs.css";
+import InputField from "../../../components/inputField/InputField";
 
 const JoinUs = () => {
   const [userName, setUserName] = useState('');
@@ -31,6 +32,7 @@ const JoinUs = () => {
     };
 
     try {
+      console.log(formData);
       const response = await axios.post(
         'http://127.0.0.1:8000/api/user/create',
         formData,
@@ -93,76 +95,52 @@ const JoinUs = () => {
         </div>
         <form className="joinForm" onSubmit={handleSubmit}>
           <div className="formItem">
-            <span>User Name</span>
-            <div className="inputForm">
-              <input
-                type="text"
-                placeholder="User Name"
-                required
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            </div>
+            <InputField
+            placeholder='User Name'
+            type="text"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            />
           </div>
           <div className="formItem">
-            <span>Password</span>
-            <div className="inputForm">
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+            <InputField
+            placeholder='Password'
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <div className="formItem">
-            <span>Confirm Password</span>
-            <div className="inputForm">
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                required
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
+            <InputField
+            placeholder='Confirm Password'
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            />
           </div>
           <div className="formItem">
-            <span>Phone Number</span>
-            <div className="inputForm">
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                required
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
+            <InputField
+            placeholder='Phone Number'
+            type="text"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            />
           </div>
           <div className="formItem">
-            <span>Email</span>
-            <div className="inputForm">
-              <input
-                type="email"
-                placeholder="Email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+            <InputField
+            placeholder='Email'
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="formItem">
-            <span>Trade Mark Name</span>
-            <div className="inputForm">
-              <input
-                type="text"
-                placeholder="Trademark Name"
-                required
-                value={trademarkName}
-                onChange={(e) => setTrademarkName(e.target.value)}
-              />
-            </div>
+            <InputField
+            placeholder='Trade Mark Name'
+            type="text"
+            value={trademarkName}
+            onChange={(e) => setTrademarkName(e.target.value)}
+            />
           </div>
           {error && <div className="error">{error}</div>}          
           <button type="submit">Send</button>

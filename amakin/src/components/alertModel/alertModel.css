@@ -10,20 +10,28 @@
     display: flex;
     justify-content: center;
     align-content: center;
+    z-index: 1000;
   }
   
   .modal-main {
     position: absolute;
     top: 40%;
     left: 40%;
-    background: white;
+    background: var(--main-bg);
     width: 80%;
     max-width: 500px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
-    color: black;
+    color: var(--main-color);
+  }
+  .modal-main h2{
+    margin-bottom:10px ;
+  }
+  .modal-main .modal-children{
+    text-align: left;
+    margin-bottom:10px ;
   }
   
   .display-block {
@@ -35,6 +43,7 @@
   }
   
   button {
+
     background-color: var(--accent-color);
     color: white;
     border: none;

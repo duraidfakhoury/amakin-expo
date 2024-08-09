@@ -37,10 +37,10 @@
         font-weight: 400;
         color: var(--main-color);
         background: var(--soft-bg);
-        border-radius: 12px;
+        border-radius: 6px;
         border: 2px solid var(--soft-bg);
         cursor: pointer;
-        box-shadow: 0 0 10px var(--overlay-color);
+        box-shadow: 0 0 5px var(--shadow-color);
     }
     .login-btn.active{
         color: var(--accent-color);

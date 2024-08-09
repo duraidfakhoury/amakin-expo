@@ -24,4 +24,11 @@
         }
         
     }
+    .table{
+        margin-bottom : 38px;
+    }
+}
+.pimg{
+    object-fit: cover;
+    padding : 5px;
 }
