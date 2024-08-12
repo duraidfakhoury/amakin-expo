@@ -28,13 +28,14 @@ import CreateEvente from "./pages/adminDashbord/createEvent/CreateEvente";
 import TParticipate from "./pages/tradeMark_Dashboard/T_patricipate/TParticipate";
 import Categories from "./pages/adminDashbord/categories/Categories";
 import RouteChangeTracker from "./components/routeChangeTracker/RouteChangeTracker";
-import Verify from "./pages/ThelandingPage/verify/Verify";
+import Verify from "./pages/verify/Verify";
 import TEvent from "./pages/tradeMark_Dashboard/Tevent/TEvent";
 import TProfile from "./pages/tradeMark_Dashboard/T_profile/TProfile";
+import Wait from "./pages/wait/Wait";
 
 function App() {
   const { theme } = useContext(ThemeContext);
-  const [setLoggedData] = useState();
+  const [loggedData, setLoggedData] = useState();
   const onLogin = async (loginData) => {
     const response = await axios.post(
       "http://127.0.0.1:8000/api/user/store",
@@ -61,13 +62,17 @@ function App() {
       element: <RouteChangeTracker />,
       children: [
         {
+          path: "verify-email",
+          element: <Verify />
+        },
+        {
+          path: "wait_for_verify",
+          element: <Wait />
+        },
+        {
           path : "" ,
           element : <LandingPage />,
           children : [
-            {
-              path: "verify-email",
-              element: <Verify />
-            },
             {
               path : "Login",
               element : <Login onLogin={onLogin}/>

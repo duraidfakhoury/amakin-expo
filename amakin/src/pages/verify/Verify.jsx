@@ -8,20 +8,8 @@ const Verify = () => {
   const navigate = useNavigate()
   const [loggedData, setLoggedData] = useState();
 
-//   if(loggedData && loggedData.email_verified_at !== null){
-//     if(loggedData?.role === 'user'){
-//         navigate('/')
-//     }else if(loggedData?.role === 'trademark_owner'){
-//         navigate('/TmainPage')
-//     }else {
-//         navigate('/mainPage')
-//     }
-//   }else{
-//     navigate('/Login')
-//   }
-
-  const resend = () => {
-    axios.get('http://127.0.0.1:8000/api/otp/resend-otp',{
+  const resend = async () => {
+    await axios.get('http://127.0.0.1:8000/api/otp/resend-otp',{
         headers: {
             Accept: "application/json",
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -51,7 +39,22 @@ const Verify = () => {
             Accept: "application/json",
             Authorization: `Bearer ${localStorage.getItem('token')}`
         },
-    }).then(() => {
+    }).then(async () => {
+      await axios.get(
+        "http://127.0.0.1:8000/api/me",
+        {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          },
+        }
+      ).then(
+        (response) => {
+          const { data } = response.data
+          setLoggedData(data)
+        }
+      )
+      console.log(loggedData.role)
         if(loggedData.role === 'user'){
             navigate('/')
         }else if(loggedData.role === 'trademark_owner'){
@@ -84,8 +87,8 @@ const Verify = () => {
           ))}
         </div>
         <button type="submit" className="otp-submit">Submit</button>
-        <button className="otp-submit" onClick={resend}>Resend Code</button>
       </form>
+      <button className="otp-submit" onClick={resend}>Resend Code</button>
     </div>
   );
 };
