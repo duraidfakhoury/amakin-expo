@@ -10,7 +10,7 @@
     min-height: 87.5vh;
 }
 
-.box {
+.boxx {
     background-color: var(--soft-bg);
     border-radius: 10px;
     padding: 30px;
@@ -22,17 +22,17 @@
     height: 150px;
 }
 
-.box1 {
+.boxx1 {
     grid-column: span 2; /* Make the logo box take up both columns */
     height: 250px; /* Adjust height to make it taller, if desired */
 }
 
-.box img {
+.boxx img {
     width: 100px;
     height: 100px;
 }
 
-.box button {
+.boxx button {
     background-color: var(--accent-color);
     border: none;
     padding: 15px 40px;
@@ -44,12 +44,12 @@
     width: 100%;
 }
 
-.box button:hover {
+.boxx button:hover {
     background-color: var(--accent-color-dark);
     transform: translateY(-5px);
 }
 
-.box:hover {
+.boxx:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }

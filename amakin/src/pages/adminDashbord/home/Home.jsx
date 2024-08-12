@@ -4,19 +4,19 @@ const Home = () => {
     const navigate = useNavigate();
     return (
         <div className="home">
-            <div className="box box1">
+            <div className="boxx boxx1">
                 <img src="/logo.svg" alt="" />
             </div>
-            <div className="box box2">
+            <div className="boxx boxx2">
                 <button onClick={()=>navigate('events')}>events</button>
             </div>
-            <div className="box box3">
+            <div className="boxx boxx3">
                 <button onClick={()=>navigate('createEvent')}>create event</button>
             </div>
-            <div className="box box4">
+            <div className="boxx boxx4">
                 <button onClick={()=>navigate('categories')}>categories</button>
             </div>
-            <div className="box box5"> 
+            <div className="boxx boxx5"> 
                 <button onClick={()=>navigate('SignUp')}>add admin</button>
             </div>
             
