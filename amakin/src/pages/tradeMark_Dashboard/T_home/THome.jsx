@@ -1,115 +1,134 @@
 import { useState } from "react";
 import "./Thome.css" ;
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const last_participation= [
+const ended= [
     { 
         eventid : "11",
         eventName:"the first",
-        boothId:"13"
+        end_date:"2024-12-5"
     },
     {
         eventid : "11",
         eventName:"the first",
-        boothId:"13"
+        end_date:"2024-12-5"
     },{
         eventid : "11",
         eventName:"the first",
-        boothId:"13"
+        end_date:"2024-12-5"
     },{
         eventid : "11",
         eventName:"the first",
-        boothId:"13"
+        end_date:"2024-12-5"
     },{
         eventid : "11",
         eventName:"the first",
-        boothId:"13"
+        end_date:"2024-12-5"
     },
     {
         eventid : "11",
         eventName:"the first",
-        boothId:"13"
+        end_date:"2024-12-5"
     },
     {
         eventid : "11",
         eventName:"the first",
-        boothId:"13"
+        end_date:"2024-12-5"
     },
     {
         eventid : "11",
         eventName:"the first",
-        boothId:"13"
+        end_date:"2024-12-5"
     },
 ]
 
-
+const active= [
+    { 
+        eventid : "11",
+        eventName:"the first",
+        start_date:"2024-12-5"
+    },
+    {
+        eventid : "11",
+        eventName:"the first",
+        start_date:"2024-12-5"
+    },{
+        eventid : "11",
+        eventName:"the first",
+        start_date:"2024-12-5"
+    },{
+        eventid : "11",
+        eventName:"the first",
+        start_date:"2024-12-5"
+    },{
+        eventid : "11",
+        eventName:"the first",
+        start_date:"2024-12-5"
+    },
+    {
+        eventid : "11",
+        eventName:"the first",
+        start_date:"2024-12-5"
+    },
+    {
+        eventid : "11",
+        eventName:"the first",
+        start_date:"2024-12-5"
+    },
+    {
+        eventid : "11",
+        eventName:"the first",
+        start_date:"2024-12-5"
+    },
+]
 
 const THome = () => {
-    const [activeEvent, setActiveEvent] = useState(null);
-    return (
-        <div className="t_home">
-          {activeEvent ? (
-            <ActiveEvent event={activeEvent} />
-          ) : (
-            <NoActiveEvent  />
-          )}
-        </div>
-      );
-}
-
-const ActiveEvent = ({ event }) => (
-    <div>
-      <h2>Active Event</h2>
-      <p><strong>Event Name:</strong> {event.name}</p>
-      <p><strong>Event Date:</strong> {event.date}</p>
-      {/* Add more event details as needed */}
-    </div>
-  );
-  
-  const NoActiveEvent = () => {
+    const [endedEvents, setEndedEvents] = useState([]);
+    const [activeEvents, setActiveEvents] = useState([]);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-  
-    const handleParticipateClick = () => {
-      navigate('participate');
-    };
-  
-    return (
-      <div className="noActiveEvent">
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="t_home">
         <div className="box box1">
-            <div className="Box-head">
-                <img src="./productIcon.svg" alt="" />
-                <h2>No Active Events.</h2>
+            <div className="events-list">
+            <h2>Recent Participations (Ended Events)</h2>
+            <ul>
+            {ended.map(event => (
+                <li key={event.id} className="event-item">
+                    <span>{event.eventName}</span>
+                    <span>{new Date(event.end_date).toLocaleDateString()}</span>
+                </li>
+                ))}
+            </ul>
             </div>
-            <p>you are not paticipated in an active event.</p>
         </div>
         <div className="box box2">
-            <img src="/logo.svg" alt="" />
-            <div className="texts">
-                <p>Want To Paricipate in an Event.</p>
-                <div className="info">
-                    <p>Go To The Participation page</p>
-                    <button onClick={handleParticipateClick}>Participate</button>
-                </div>
+            <div className="events-list">
+            <h2>Recent Participations (active Events)</h2>
+            <ul>
+            {active.map(event => (
+                <li key={event.id} className="event-item">
+                <Link to={`/TmainPage/Event/${event.id}`}>{event.eventName}</Link>
+                <span>{new Date(event.start_date).toLocaleDateString()}</span>
+              </li>
+                ))}
+            </ul>
             </div>
         </div>
         <div className="box box3">
-            <div className="Box-head">
-                <img src="./revenueIcon.svg" alt="" />
-                <h2>Your Recent Participates.</h2>
-            </div>
-            <div className="participation-list">
-            {
-                last_participation.map((event)=>(
-                    <div className="listItem" key={event.eventid}>
-                        <span className="eventName">{event.eventName}</span>
-                        <span className="boothID">Booth : {event.boothId}</span>
-                    </div>
-                ))
-            }
+            <img src="./logo.svg" alt="" />
+            <div className="info">
+            <p>Want to particpate in a new event</p>
+            <button onClick={()=>navigate('/TmainPage/participate')}>participate</button>
             </div>
         </div>
-      </div>
-    );
-  };
+    </div>
+  );
+}
 
 export default THome;

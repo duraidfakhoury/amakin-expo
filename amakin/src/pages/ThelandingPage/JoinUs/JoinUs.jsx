@@ -11,11 +11,20 @@ const JoinUs = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [trademarkName, setTrademarkName] = useState('');
+  const [imageFile, setImageFile] = useState(null);
+  const [fileName, setFileName] = useState('');
   const [error, setError] = useState('');
   const [showModal, setShowModal] = useState(false);
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+    setFileName(file ? file.name : '');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
@@ -28,46 +37,40 @@ const JoinUs = () => {
       password: password,
       role: "trademark_owner",
       trademark_name: trademarkName,
-      img: ''
+      image:imageFile 
     };
 
     try {
-      console.log(formData);
       const response = await axios.post(
         'http://127.0.0.1:8000/api/user/create',
         formData,
         {
           headers: {
             'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data',  // Ensure correct header for file uploads
           },
         }
       );
 
-      const { status } = response;
-
-      if (status === 200) {
-        console.log('Registration successful:', response.data);
-        setShowModal(true);  // Show the modal
-        // Clear the form
+      if (response.status === 200) {
+        setShowModal(true);
         setUserName('');
         setEmail('');
         setPhone('');
         setPassword('');
         setConfirmPassword('');
         setTrademarkName('');
+        setImageFile(null);
+        setFileName('');
       } else {
-        setError('Unexpected status code: ' + status);
-        console.log('Unexpected status code:', status);
+        setError('Unexpected status code: ' + response.status);
       }
     } catch (error) {
       if (error.response) {
-        console.error('Error response:', error.response);
         setError('There was an error registering: ' + (error.response.data.message || error.message));
       } else if (error.request) {
-        console.error('Error request:', error.request);
         setError('No response received: ' + error.message);
       } else {
-        console.error('Error message:', error.message);
         setError('Error: ' + error.message);
       }
     }
@@ -141,6 +144,21 @@ const JoinUs = () => {
             value={trademarkName}
             onChange={(e) => setTrademarkName(e.target.value)}
             />
+          </div>
+          <div className="formItem">
+            <input
+              type="file"
+              id="image"
+              name="img"
+              onChange={handleImageChange}
+              style={{ display: 'none' }}
+            />
+            <label htmlFor="image" className="custom-file-upload">
+              Choose Image
+            </label>
+            {fileName && (
+              <span className="file-name">{fileName}</span>
+            )}
           </div>
           {error && <div className="error">{error}</div>}          
           <button type="submit">Send</button>

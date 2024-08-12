@@ -3,14 +3,12 @@
 .signUp {
     background-color: var(--main-bg);
     display: flex;
-    padding: 30px;
-    height: 100%;
+    min-height: 87.5vh;
 }
 
 .signUpDesc {
     flex: 1;
     height: 100%;
-    border-right: 3px solid var(--shadow-color);
     display: flex;
     flex-direction: column;
     img{
@@ -41,7 +39,7 @@
 }
 
 .signUpForm {
-    margin: 30px 0 0 20px;
+    margin : 30px;
     padding: 20px 0 20px 10px;
     flex: 1;
     height: 90%;

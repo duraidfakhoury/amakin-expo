@@ -54,18 +54,12 @@ export const menu = [
       listItems: [
         {
           id: 1,
-          title: "Users",
-          url: "users",
-          icon: <PiUsersFourFill/>,
-        },
-        {
-          id: 2,
           title: "Events",
           url: "events",
           icon: <AiOutlineProduct/>,
         },
         {
-          id: 3,
+          id: 2,
           title: "Categories",
           url: "categories",
           icon: <BiCategoryAlt/>,
@@ -138,12 +132,6 @@ export const menu = [
           url: "representatives",
           icon: <AiOutlineProduct/>,
         },
-        {
-          id: 2,
-          title: "Events",
-          url: "events",
-          icon: <PiUsersFourFill/>,
-        },
       ],
     },
     {
@@ -155,12 +143,6 @@ export const menu = [
           title: "Participate",
           url: "participate",
           icon: <IoCreateOutline/>,
-        },
-        {
-          id: 2,
-          title: "Add Admin",
-          url: "signUp",
-          icon: <IoMdPersonAdd/>,
         },
       ],
     },

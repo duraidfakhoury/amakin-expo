@@ -1,11 +1,10 @@
 @import "../../../styles/variables.css";
 .t_home {
-    .noActiveEvent{
         display: grid;
         gap: 20px;
         grid-template-columns: repeat(4, 1fr);
         grid-auto-rows: minmax(180px,auto);
-        margin-bottom: 37px;
+        min-height: 87.5vh;        
 
         .box{
             padding: 20px;
@@ -19,22 +18,26 @@
         }
         .box1{
             grid-column: span 1 ;
-            grid-row: span 1;
+            grid-row: span 4;
             
             h2{
                 margin: 5px;
                 font-size: 28px;
                 color: var(--main-color);
             }
-            p{
-                font-size: 20px;
-                color: var(--main-color);
-                margin: 40px 10px 10px 10px;
-            }
         }
     
         .box2{
-            grid-column: span 3 ;
+            grid-column: span 1 ;
+            grid-row: span 4;
+            h2{
+                margin: 5px;
+                font-size: 28px;
+                color: var(--main-color);
+            }
+        }
+        .box3{
+            grid-column: span 2 ;
             grid-row: span 4;
             display: flex;
             align-items: center;
@@ -43,7 +46,7 @@
                 width: 75vh;
                 opacity: 50%;
             }
-            .texts{
+            .info{
                 color: var(--main-color);
                 align-items: center;
                 align-content: center;
@@ -51,35 +54,20 @@
                 flex-direction:column ;
                 justify-content: center;
                 font-size: 28px;
-                .info{
-                    display: flex;
-                    gap: 10px;
-                    font-size: 20px;
-                    align-items: center;
-                }
+                gap: 10px;
+                align-items: center;
             }
         }
-        .box3{
-            grid-column: span 1 ;
-            grid-row: span 3;
-            .participation-list{
-                margin: 20px 20px 0px 20px;
-                .listItem{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    margin-bottom: 30px;
-                    padding-bottom: 10px;
-                    border-bottom: 2px solid var(--soft-bg);
-                    .eventName{
-                        font-size: 18px;
-                        font-weight: 500;
-                    }
-                    .boothID{
-                        font-weight: 500;
-                    }
-                }
+        .event-item{
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid var(--soft-bg);
+            padding: 20px;
+            margin: 15px 5px;
+            font-size: 20px;
+            color: var(--main-color);
+            link{
+                cursor: pointer;
             }
         }
     }
-}

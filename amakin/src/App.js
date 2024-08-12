@@ -13,8 +13,6 @@ import MainPage from "./pages/adminDashbord/mainPage/MainPage";
 import Home from "./pages/adminDashbord/home/Home";
 import Events from './pages/adminDashbord/events/Events';
 import Event from "./pages/adminDashbord/event/Event";
-import Users from "./pages/adminDashbord/users/Users";
-import User from "./pages/adminDashbord/user/User";
 import Settings from "./pages/adminDashbord/settings/Settings";
 import TMainPage from "./pages/tradeMark_Dashboard/T_mainPage/TMainPage";
 import THome from "./pages/tradeMark_Dashboard/T_home/THome";
@@ -29,6 +27,8 @@ import { singleUser } from "./data";
 import CreateEvente from "./pages/adminDashbord/createEvent/CreateEvente";
 import TParticipate from "./pages/tradeMark_Dashboard/T_patricipate/TParticipate";
 import Categories from "./pages/adminDashbord/categories/Categories";
+import TEvent from "./pages/tradeMark_Dashboard/Tevent/TEvent";
+import TProfile from "./pages/tradeMark_Dashboard/T_profile/TProfile";
 function App() {
   const {theme} = useContext(ThemeContext);
   const [loggedData , setLoggedData] = useState(); 
@@ -80,7 +80,7 @@ function App() {
     },
     {
       path : "/mainPage",
-      element : <MainPage userData={loggedData}/>,
+      element: <MainPage/>,
       children :
         [
           {
@@ -92,20 +92,12 @@ function App() {
             element: <Profile {...singleUser}/>,
           },
           {
-            path: "users",
-            element: <Users />,
-          },
-          {
             path: "events",
             element: <Events />,
           },
           {
             path: "categories",
             element: <Categories />,
-          },
-          {
-            path: "users/:id",
-            element: <User />,
           },
           {
             path: "Event/:eventId",
@@ -127,7 +119,7 @@ function App() {
     }
     ,{
       path : "/TmainPage",
-      element : <TMainPage userData={loggedData}/>,
+      element : <TMainPage />,
       children :
         [
           {
@@ -136,11 +128,15 @@ function App() {
           },
           {
             path: "profile",
-            element: <TUser userData={loggedData} />,
+            element: <TProfile {...singleUser} />,
           },
           {
             path: "events",
             element: <TEvents />,
+          },
+          {
+            path: "Event/:eventId",
+            element: <TEvent />,
           },
           {
             path: "representatives",
