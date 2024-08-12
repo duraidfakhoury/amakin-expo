@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./profile.css";
+import "./Tprofile.css";
 
-const Profile = (props) => {
+
+
+const TProfile = (props) => {
     const [profileData, setProfileData] = useState(null);
     const [error, setError] = useState("");
-    const [activities , setActivities] = useState([]);
+    const [activities , setActivities ] = useState([]);
 
     const getProfileData = async () => {
         try {
@@ -28,15 +30,15 @@ const Profile = (props) => {
     };
 
     const getActivities = async () => {
-        
+        const number = {
+            take : 10
+        }
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/activity/index' , {
+            const response = await axios.get('http://127.0.0.1:8000/api/activity/index',number , {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
-                params: { take: 2 }  // Pass 'take' as a query parameter
-
             });
             const { status, data } = response;
             if (status === 200) {
@@ -52,12 +54,14 @@ const Profile = (props) => {
     };
 
     useEffect(() => {
-        getActivities();
         getProfileData();
+        getActivities();
     }, []);
 
+     
+
     return (
-        <div className="profile">
+        <div className="Tprofile">
             <div className="view">
                 <div className="info">
                     <div className="topInfo">
@@ -85,6 +89,12 @@ const Profile = (props) => {
                             </span>
                         </div>
                         <div className="item">
+                            <span className="itemTitle">TradeMrk Name: </span>
+                            <span className="itemValue">
+                                {profileData ? profileData.trademark_name : "Loading..."}
+                            </span>
+                        </div>
+                        <div className="item">
                             <span className="itemTitle">Status: </span>
                             <span className="itemValue">
                                 {profileData ? (profileData.accepted_by_admin ? "Verified" : "Not Verified") : "Loading..."}
@@ -94,6 +104,16 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <hr />
+                <div className="wallet">
+                    <div className="wallet-info">
+                        <h2>Current balance</h2>
+                        <span>200.00$</span>
+                    </div>
+                    <div className="more">
+                        <p>view your transactions</p>
+                        <button>View</button>
+                    </div>
+                </div>
             </div>
             <div className="activities">
                 <h2>Latest Activities</h2>
@@ -114,4 +134,4 @@ const Profile = (props) => {
     );
 };
 
-export default Profile;
+export default TProfile;

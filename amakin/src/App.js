@@ -13,8 +13,6 @@ import MainPage from "./pages/adminDashbord/mainPage/MainPage";
 import Home from "./pages/adminDashbord/home/Home";
 import Events from "./pages/adminDashbord/events/Events";
 import Event from "./pages/adminDashbord/event/Event";
-import Users from "./pages/adminDashbord/users/Users";
-import User from "./pages/adminDashbord/user/User";
 import Settings from "./pages/adminDashbord/settings/Settings";
 import TMainPage from "./pages/tradeMark_Dashboard/T_mainPage/TMainPage";
 import THome from "./pages/tradeMark_Dashboard/T_home/THome";
@@ -31,10 +29,12 @@ import TParticipate from "./pages/tradeMark_Dashboard/T_patricipate/TParticipate
 import Categories from "./pages/adminDashbord/categories/Categories";
 import RouteChangeTracker from "./components/routeChangeTracker/RouteChangeTracker";
 import Verify from "./pages/ThelandingPage/verify/Verify";
+import TEvent from "./pages/tradeMark_Dashboard/Tevent/TEvent";
+import TProfile from "./pages/tradeMark_Dashboard/T_profile/TProfile";
 
 function App() {
   const { theme } = useContext(ThemeContext);
-  const [loggedData, setLoggedData] = useState();
+  const [setLoggedData] = useState();
   const onLogin = async (loginData) => {
     const response = await axios.post(
       "http://127.0.0.1:8000/api/user/store",
@@ -61,119 +61,118 @@ function App() {
       element: <RouteChangeTracker />,
       children: [
         {
-          path: "",
-          element: <LandingPage />,
-          children: [
+          path : "" ,
+          element : <LandingPage />,
+          children : [
             {
               path: "verify-email",
               element: <Verify />
             },
             {
-              path: "Login",
-              element: <Login onLogin={onLogin} />,
+              path : "Login",
+              element : <Login onLogin={onLogin}/>
             },
             {
-              path: "JoinUs",
-              element: <JoinUs />,
+              path : "JoinUs",
+              element :<JoinUs/>
             },
             {
-              path: "ContactUs",
-              element: <ContactUs />,
+              path : "ContactUs" ,
+              element : <ContactUs />
             },
             {
-              path: "AboutUs",
-              element: <AboutUs />,
+              path : "AboutUs" ,
+              element : <AboutUs />
             },
-          ],
+            
+          ]
         },
         {
-          path: "/mainPage",
-          element: <MainPage userData={loggedData} />,
-          children: [
-            {
-              path: "",
-              element: <Home />,
-            },
-            {
-              path: "profile",
-              element: <Profile {...singleUser} />,
-            },
-            {
-              path: "users",
-              element: <Users />,
-            },
-            {
-              path: "events",
-              element: <Events />,
-            },
-            {
-              path: "categories",
-              element: <Categories />,
-            },
-            {
-              path: "users/:id",
-              element: <User />,
-            },
-            {
-              path: "Event/:eventId",
-              element: <Event />,
-            },
-            {
-              path: "settings",
-              element: <Settings />,
-            },
-            {
-              path: "SignUp",
-              element: <SignUp />,
-            },
-            {
-              path: "createEvent",
-              element: <CreateEvente />,
-            },
-          ],
-        },
-        {
-          path: "/TmainPage",
-          element: <TMainPage userData={loggedData} />,
-          children: [
-            {
-              path: "",
-              element: <THome />,
-            },
-            {
-              path: "profile",
-              element: <TUser userData={loggedData} />,
-            },
-            {
-              path: "events",
-              element: <TEvents />,
-            },
-            {
-              path: "representatives",
-              element: <TRepresentatives />,
-            },
-            {
-              path: "products",
-              element: <TProducts />,
-            },
-            {
-              path: "users/:id",
-              element: <TUser />,
-            },
-            {
-              path: "products/:productId",
-              element: <TProduct />,
-            },
-            {
-              path: "settings",
-              element: <TSettings />,
-            },
-            {
-              path: "participate",
-              element: <TParticipate />,
-            },
-          ],
-        },
+          path : "/mainPage",
+          element: <MainPage/>,
+          children :
+            [
+              {
+                path: "",
+                element: <Home />,
+              },
+              {
+                path: "profile",
+                element: <Profile {...singleUser}/>,
+              },
+              {
+                path: "events",
+                element: <Events />,
+              },
+              {
+                path: "categories",
+                element: <Categories />,
+              },
+              {
+                path: "Event/:eventId",
+                element: <Event />,
+              },
+              {
+                path : "settings",
+                element :  <Settings />
+              },
+              {
+                path : "SignUp",
+                element :<SignUp />
+              },
+              {
+                path : "createEvent",
+                element : <CreateEvente/>
+              }
+            ]
+        }
+        ,{
+          path : "/TmainPage",
+          element : <TMainPage />,
+          children :
+            [
+              {
+                path: "",
+                element: <THome />,
+              },
+              {
+                path: "profile",
+                element: <TProfile {...singleUser} />,
+              },
+              {
+                path: "events",
+                element: <TEvents />,
+              },
+              {
+                path: "Event/:eventId",
+                element: <TEvent />,
+              },
+              {
+                path: "representatives",
+                element: <TRepresentatives />,
+              },
+              {
+                path: "products",
+                element: <TProducts />,
+              },
+              {
+                path: "users/:id",
+                element: <TUser />,
+              },
+              {
+                path: "products/:productId",
+                element: <TProduct />,
+              },
+              {
+                path : "settings",
+                element :  <TSettings />
+              },
+              {
+                path : "participate",
+                element : <TParticipate/>
+              }
+            ]
+        }
       ]
     }
   ]);

@@ -1,6 +1,7 @@
 @import "../../../styles/variables.css" ;
 
 .t_products {
+    min-height: 87.5vh;
     display: flex ;
     flex-direction: column;
     gap: 20px;

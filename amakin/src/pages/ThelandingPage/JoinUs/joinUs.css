@@ -38,7 +38,6 @@
     margin: 30px 0 0 20px;
     padding: 20px 0 20px 10px;
     flex: 1;
-    height: 90%;
     border-radius: 12px;
     box-shadow: 0 0 10px var(--soft-bg);
 }
@@ -60,44 +59,14 @@
 
 .formItem {
     width: 75%;
-    padding: 5px 0;
 }
 
-.formItem span {
-    font-size: 18px;
-    color: var(--main-color);
-    font-weight: 400;
-    padding: 3px 20px;
-}
 
-.inputForm {
-    width: 100%;
-}
-
-.inputForm input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    outline: none;
-    border: 2px solid var(--shadow-color);
-    border-radius: 40px;
-    color: var(--main-color);
-    font-size: 16px;
-    padding: 20px 45px 20px 20px;
-}
-
-.inputForm input::placeholder {
-    color: var(--main-color);
-}
-
-.inputForm input:focus {
-    border: 2px solid var(--accent-color);
-}
 
 .error {
     background-color: var(--accent-color);
     padding: 5px;
-    width: 75%; /* Adjusted to match input width */
+    width: 100%; /* Adjusted to match input width */
     border-radius: 8px;
     color: white;
     margin: 10px 0;
@@ -114,4 +83,37 @@ button {
     padding: 10px 20px;
     margin-top: 10px;
     box-shadow: 0 0 5px var(--shadow-color);
+}
+
+.formItem input[type="file"] {
+    display: none; /* Hide the default file input */
+}
+
+.custom-file-upload {
+    margin: 10px;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: 2px solid var(--main-color);
+    border-radius: 6px;
+    color: var(--main-color);
+    font-size: 16px;
+    text-align: center; /* Center the text */
+    cursor: pointer;
+    transition: border 0.3s ease;
+    padding: 15px;
+}
+
+.custom-file-upload:hover,
+.custom-file-upload:focus {
+    border: 2px solid var(--accent-color);
+}
+
+.file-name {
+    margin-top: 10px;
+    font-size: 16px;
+    color: var(--main-color);
+    text-align: center;
 }

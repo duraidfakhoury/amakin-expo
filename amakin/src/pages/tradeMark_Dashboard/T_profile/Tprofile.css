@@ -1,7 +1,7 @@
 @import "../../../styles/variables.css";
 
 
-.profile {
+.Tprofile {
     display: flex;
     min-height: 87.5vh;
     .view {
@@ -57,16 +57,45 @@
             }
         }
         hr{
-            width: 90%;
+            width: 98%;
             height: 0 ;
             border: 0.5px  solid var(--soft-bg);
 
         }
-        .chart{
-            width: 80%;
-            height: 400px;
-            margin-top: 50px;
-
+        .wallet{
+            min-height: 40vh;
+            border: 2px solid var(--soft-bg);
+            border-radius: 6px;
+            padding : 20px;
+            box-shadow: 0 0 8px solid var(--soft-bg);
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .wallet-info{
+                display: flex;
+                justify-content: space-between;
+                h2{
+                    color: var(--accent-color);
+                }
+                span{
+                    font-size: 20px;
+                    color: var(--main-color);
+                }
+            }
+            .more{
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+                p{
+                    font-size: 22px;
+                    color: var(--main-color);
+                }
+                button{
+                    font-size: 20px;
+                }
+            }
         }
     }
     .activities{

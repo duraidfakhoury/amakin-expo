@@ -74,7 +74,15 @@ const CreateEvent = () => {
 
   return (
     <div className='createEvent'>
-      <div className="createDesc">Create an Event</div>
+      <div className="createDesc">
+        <img src="../undraw_building_blocks_re_5ahy.svg" alt="" />
+        <div className="text">
+          <h1>Create an Event</h1>
+          <span>Add the basic information of the event in this form </span>
+          <span>You can specify more detals for the event int event details page once you create it.</span>
+          <span>Make sure you fill it up with the right data.</span>
+        </div>
+      </div>
       <div className="createForm">
         <span className="Etitle">Fill Up The Information.</span>
         <form className='eventForm' onSubmit={handleSubmit}>
