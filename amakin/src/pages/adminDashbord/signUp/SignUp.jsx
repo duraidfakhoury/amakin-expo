@@ -12,9 +12,18 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
+  const [fileName, setFileName] = useState('');
+ 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+    setFileName(file ? file.name : '');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
@@ -26,7 +35,7 @@ const SignUp = () => {
       phone: phone,
       password: password,
       role: "admin",
-      img: ''
+      image:imageFile 
     };
 
     try {
@@ -36,34 +45,29 @@ const SignUp = () => {
         {
           headers: {
             'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data',  // Ensure correct header for file uploads
           },
         }
       );
 
-      const { status } = response;
-
-      if (status === 200) {
-        console.log('Registration successful:', response.data);
-        setShowModal(true);  // Show the modal
-        // Clear the form
+      if (response.status === 200) {
+        setShowModal(true);
         setUserName('');
         setEmail('');
         setPhone('');
         setPassword('');
         setConfirmPassword('');
+        setImageFile(null);
+        setFileName('');
       } else {
-        setError('Unexpected status code: ' + status);
-        console.log('Unexpected status code:', status);
+        setError('Unexpected status code: ' + response.status);
       }
     } catch (error) {
       if (error.response) {
-        console.error('Error response:', error.response);
         setError('There was an error registering: ' + (error.response.data.message || error.message));
       } else if (error.request) {
-        console.error('Error request:', error.request);
         setError('No response received: ' + error.message);
       } else {
-        console.error('Error message:', error.message);
         setError('Error: ' + error.message);
       }
     }
@@ -129,6 +133,21 @@ const SignUp = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             />
+          </div>
+          <div className="signformItem">
+            <input
+              type="file"
+              id="image"
+              name="img"
+              onChange={handleImageChange}
+              style={{ display: 'none' }}
+            />
+            <label htmlFor="image" className="custom-file-upload">
+              Choose Image
+            </label>
+            {fileName && (
+              <span className="file-name">{fileName}</span>
+            )}
           </div>
           {error && <div className="error">{error}</div>}          
           <button type="submit">Send</button>

@@ -19,7 +19,8 @@ const TMainPage = ()=> {
         });
         const { status, data } = response;
         if (status === 200) {
-            setUserData(data.data); // Correctly access the user data
+            setUserData(data.data);
+            console.log(userdata) // Correctly access the user data
         } else {
             console.log("Failed to fetch profile data");
         }
@@ -34,7 +35,7 @@ const TMainPage = ()=> {
     const Layout = () => {
         return (
           <div className="t_main">
-            <Navbar userName = {userdata.name}s />
+            <Navbar userName = {userdata.name} userLogo = {userdata.image} />
             <div className="container">
               <div className="menuContainer"><Menu menu={Tmenu}/></div>
               <div className="contentContainer"><Outlet/></div>

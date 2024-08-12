@@ -37,7 +37,7 @@ const MainPage = ()=> {
       console.log(userdata);
         return (
           <div className="main">
-            <Navbar userName = {userdata.name}/>
+            <Navbar userName = {userdata.name} userLogo = {userdata.image}/>
             <div className="container">
               <div className="menuContainer"><Menu menu={menu}/></div>
               <div className="contentContainer"><Outlet/></div>

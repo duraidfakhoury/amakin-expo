@@ -62,17 +62,17 @@
             border: 0.5px  solid var(--soft-bg);
 
         }
-        .chart{
-            width: 80%;
-            height: 400px;
-            margin-top: 50px;
-
-        }
+        
     }
     .activities{
         flex: 1;
         h2{
             margin-bottom: 20px;
+            color: var(--main-color);
+        }
+        p{
+            color: var(--main-color);
+
         }
         ul{
             li{
@@ -89,7 +89,8 @@
                     width: 10px;
                     height: 10px;
                     border-radius: 50%;
-                    background-color: #f45b69;
+                    background-color: #f45b69 ;
+                    opacity: 20%;
                     transform: translateX(-50%);
                 }
 
@@ -107,6 +108,10 @@
                 }
             }
         }
-
+        p{
+            background-color: #f45b69;
+            width: 480px;
+            padding: 15px;
+        }
     }
 }

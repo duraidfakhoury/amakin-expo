@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./profile.css";
 
-const Profile = (props) => {
+const Profile = () => {
     const [profileData, setProfileData] = useState(null);
     const [error, setError] = useState("");
-    const [activities , setActivities] = useState([]);
+    const [activities, setActivities] = useState([]);
 
     const getProfileData = async () => {
         try {
@@ -28,22 +28,19 @@ const Profile = (props) => {
     };
 
     const getActivities = async () => {
-        
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/activity/index' , {
+            const response = await axios.get('http://127.0.0.1:8000/api/activity/index', {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
                 params: { take: 2 }  // Pass 'take' as a query parameter
-
             });
             const { status, data } = response;
             if (status === 200) {
-                setActivities(data.data); // Correctly access the user data
-                console.log (activities);
+                setActivities(data.data); // Correctly access the activities data
             } else {
-                setError("Failed to activities");
+                setError("Failed to fetch activities");
             }
         } catch (error) {
             setError("Failed to fetch activities");
@@ -52,8 +49,8 @@ const Profile = (props) => {
     };
 
     useEffect(() => {
-        getActivities();
         getProfileData();
+        getActivities();
     }, []);
 
     return (
@@ -62,7 +59,9 @@ const Profile = (props) => {
                 <div className="info">
                     <div className="topInfo">
                         {/* Render image only if profileData and img exist */}
-                        {profileData && profileData.image && <img src={`http://127.0.0.1:8000${profileData.image}`} alt="Profile" />}
+                        {profileData && profileData.image && (
+                            <img src={`http://127.0.0.1:8000${profileData.image}`} alt="Profile" />
+                        )}
                         <h1>Your Profile</h1>
                     </div>
                     <div className="details">
@@ -97,9 +96,9 @@ const Profile = (props) => {
             </div>
             <div className="activities">
                 <h2>Latest Activities</h2>
-                {props.activities && (
+                {activities.length > 0 ? (
                     <ul>
-                        {props.activities.map((activity, index) => (
+                        {activities.map((activity, index) => (
                             <li key={index}>
                                 <div>
                                     <p>{activity.text}</p>
@@ -108,6 +107,8 @@ const Profile = (props) => {
                             </li>
                         ))}
                     </ul>
+                ) : (
+                    <p >No activities to show</p>
                 )}
             </div>
         </div>

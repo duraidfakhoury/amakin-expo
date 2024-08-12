@@ -15,6 +15,13 @@ const addRep_columns = [
   { field: "image", type: "file", headerName: "Image" },
 ];
 
+const editRep_columns = [
+  { field: "name", type: "string", headerName: "Name" },
+  { field: "phone", type: "string", headerName: "Phone" },
+  { field: "email", type: "string", headerName: "Email" },
+  { field: "passport_number", type: "string", headerName: "Passport Number" },
+];
+
 const columns = (handleRepDelete, handleRepEdit) => [
   { field: "id", headerName: "ID", width: 90 },
   {
@@ -106,12 +113,7 @@ const TRepresnetatives = () => {
 
   const handleAddRep = async (newRepresentative) => {
     try {
-      const formData = new FormData();
-      Object.entries(newRepresentative).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-
-      const response = await axios.post(`http://127.0.0.1:8000/api/representative/create`, formData, {
+      const response = await axios.post(`http://127.0.0.1:8000/api/representative/create`, newRepresentative, {
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -225,7 +227,7 @@ const TRepresnetatives = () => {
         {open && (
           <Add
             slug={isEdit ? 'Edit Representative' : 'Add New Representative'}
-            columns={addRep_columns}
+            columns={isEdit ? editRep_columns : addRep_columns}
             setOpen={setOpen}
             onAdd={isEdit ? handleUpdateRep : handleAddRep}
             initialData={isEdit ? currentRep : null} // Pass current representative data for editing

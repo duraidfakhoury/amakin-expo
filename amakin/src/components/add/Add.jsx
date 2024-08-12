@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import Select from "react-select";
 import "./add.css";
 
-const Add = ({ slug, columns, onAdd, setOpen, categories, initialData = {} }) => {
-  // Ensure categories is initialized to an array
+const Add = ({ slug, columns, onAdd, setOpen, categories = [], initialData = {} }) => {
   const [formValues, setFormValues] = useState({
     ...initialData,
-    categories: initialData.categories || [], // Default to empty array if undefined
+    categories: initialData.categories || [],
   });
   
   const [fileNames, setFileNames] = useState({});
@@ -36,7 +35,6 @@ const Add = ({ slug, columns, onAdd, setOpen, categories, initialData = {} }) =>
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Filter out fields that are not part of the columns prop
     const filteredValues = Object.fromEntries(
       Object.entries(formValues).filter(([key]) =>
         columns.some(column => column.field === key)
@@ -56,22 +54,26 @@ const Add = ({ slug, columns, onAdd, setOpen, categories, initialData = {} }) =>
             <div className="item" key={column.field}>
               <label>{column.headerName}</label>
               {column.type === "dropdown" ? (
-                <Select
-                  isMulti
-                  name={column.field}
-                  options={categories.map(category => ({
-                    value: category.id,
-                    label: category.name,
-                  }))}
-                  value={categories.filter(category => 
-                    formValues.categories.includes(category.id)).map(category => ({
+                categories && categories.length > 0 ? (
+                  <Select
+                    isMulti
+                    name={column.field}
+                    options={categories.map(category => ({
                       value: category.id,
                       label: category.name,
                     }))}
-                  className="custom-select-container"
-                  classNamePrefix="custom-select"
-                  onChange={handleCategoryChange}
-                />
+                    value={categories.filter(category => 
+                      formValues.categories.includes(category.id)).map(category => ({
+                        value: category.id,
+                        label: category.name,
+                      }))}
+                    className="custom-select-container"
+                    classNamePrefix="custom-select"
+                    onChange={handleCategoryChange}
+                  />
+                ) : (
+                  <p>No categories available</p>
+                )
               ) : column.type === "file" ? (
                 <div key={column.field} className="form-group">
                   <input
@@ -107,3 +109,4 @@ const Add = ({ slug, columns, onAdd, setOpen, categories, initialData = {} }) =>
 };
 
 export default Add;
+

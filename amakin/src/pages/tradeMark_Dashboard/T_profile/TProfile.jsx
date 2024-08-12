@@ -117,9 +117,9 @@ const TProfile = (props) => {
             </div>
             <div className="activities">
                 <h2>Latest Activities</h2>
-                {props.activities && (
+                {activities.length > 0 ? (
                     <ul>
-                        {props.activities.map((activity, index) => (
+                        {activities.map((activity, index) => (
                             <li key={index}>
                                 <div>
                                     <p>{activity.text}</p>
@@ -128,6 +128,8 @@ const TProfile = (props) => {
                             </li>
                         ))}
                     </ul>
+                ) : (
+                    <p >No activities to show</p>
                 )}
             </div>
         </div>
