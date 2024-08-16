@@ -1,31 +1,29 @@
 import { useEffect, useState } from "react";
 import BigChartBox from "../../../components/bigChartBox/BigChartBox";
-import ChartBox from "../../../components/chartBox/ChartBox";
 import PieCartBox from "../../../components/pieCartBox/PieCartBox";
 import ProgressBarBox from "../../../components/pragressBarBox/ProgressBarBox";
-import {  chartBoxRevenue, chartBoxUser } from "../../../data";
-import "./event.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import DetailsBox from "../../../components/detailsBox/DetailsBox";
 import TopBox from "../../../components/topBox/TopBox";
-
+import "./event.css";
 const Event = () => {
-  const { eventId } = useParams(); // Extract the eventId from the URL
-  const [event, setEvent] = useState(null);
+  const { exhibitionId } = useParams(); // Extract the exhibitionId from the URL
+  const [exhibition, setexhibition] = useState(null);
   const [booths, setBooths] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchEventDetails = async () => {
+    const fetchexhibitionDetails = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/event/${eventId}`, {
+        const response = await axios.get(`http://127.0.0.1:8000/api/exhibition/${exhibitionId}`, {
           headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         });
-        setEvent(response.data.data);
-        const boothsResponse = await axios.get(`http://127.0.0.1:8000/api/booth/event/${eventId}/index`, {
+        setexhibition(response.data.data);
+        const boothsResponse = await axios.get(`http://127.0.0.1:8000/api/booth/exhibition/${exhibitionId}/index`, {
             headers: {
               Accept: 'application/json',
               Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -33,48 +31,63 @@ const Event = () => {
           });
           setBooths(boothsResponse.data.data);
         } catch (error) {
-          console.error('Error fetching event details or booths:', error);
+          console.error('Error fetching exhibition details or booths:', error);
         }
     };
 
-    fetchEventDetails();
-  }, [eventId]);
+    fetchexhibitionDetails();
+  }, [exhibitionId]);
 
-  if (!event) {
-    return <div>Loading...</div>;
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://127.0.0.1:8000/api/exhibition/${exhibitionId}/destroy`, {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      navigate("/mainPage/exhibitions");
+    } catch (error) {
+      console.error('Error deleting the exhibition:', error);
+      alert('Failed to delete the exhibition. Please try again.');
+    }
+  };
+
+  if (!exhibition) {
+    return <div className="loading">Loading...</div>;
   }
 
 
 
   return (
-    <div className="event">
-      <div className="box box1">
-        <DetailsBox EventDetails={event} />
+    <div className="exhibitiont">
+      <div className="booxx boox1">
+        <DetailsBox exhibitionDetails={exhibition} />
       </div>
-      <div className="box box2">
-        <ChartBox {...chartBoxUser} />
+      <div className="booxx boox2">
+        <h2>Delete exhibition </h2>
+        <div className="btn-cont">
+        <button onClick={handleDelete}>Delete</button>
+        </div>
       </div>
-      <div className="box box3">
+      <div className="booxx boox3">
         <ProgressBarBox  
             icon="/productIcon.svg"
-            title="Event Progress"
-            startingDate={event.start_date}
-            endingDate={event.end_date} />
+            title="exhibition Progress"
+            startingDate={exhibition.start_date}
+            endingDate={exhibition.end_date} />
       </div>
-      <div className="box box4">
+      <div className="booxx boox4">
         <PieCartBox booths = {booths}/>
       </div>
-      <div className="box box5"></div>
-      <div className="box box6">
-        <ChartBox {...chartBoxRevenue} />
+      
+      <div className="booxx boox7">
+      <BigChartBox />
       </div>
-      <div className="box box7">
+      <div className="booxx boox8">
         <TopBox/>
       </div>
-      <div className="box box8">
-        <BigChartBox />
-      </div>
-      <div className="box box9"></div>
+      <div className="boox boox9"></div>
     </div>
   );
 };

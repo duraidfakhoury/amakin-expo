@@ -1,0 +1,39 @@
+@import "../../../styles/variables.css";
+.top-up-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 87.5vh;
+  }
+  .top-up-wrapper{
+    padding: 40px;
+    border: 2px solid var(--soft-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .top-up-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .top-up-container input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    font-size: 16px;
+  }
+  
+  .top-up-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .top-up-container p {
+    margin-top: 20px;
+    font-size: 16px;
+    color: green;
+  }
+  

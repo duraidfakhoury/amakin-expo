@@ -1,6 +1,6 @@
 @import "../../../styles/variables.css";
 
-.createEvent {
+.createexhibition {
     display: flex;
     padding: 30px;
     height: 100%;
@@ -8,7 +8,7 @@
     min-height: 87.5vh;
 }
 
-.createEvent .createDesc {
+.createexhibition .createDesc {
     flex: 1;
     height: 100%;
     display: flex;
@@ -20,7 +20,7 @@
 }
 
 
-.createEvent .createForm {
+.createexhibition .createForm {
     margin: 30px 0 0 20px;
     padding: 20px 0 20px 10px;
     flex: 1;
@@ -31,14 +31,14 @@
     flex-direction: column ;
 }
 
-.createEvent .createForm .Etitle {
+.createexhibition .createForm .Etitle {
     font-size: 24px;
     font-weight: bold;
     color: var(--main-color);
     padding: 20px;
 }
 
-.createEvent .createForm .eventForm {
+.createexhibition .createForm .exhibitionForm {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,7 +46,7 @@
     margin: 75px 0;
 }
 
-.createEvent .createForm .eventForm .EFormItem {
+.createexhibition .createForm .exhibitionForm .EFormItem {
     width: 75%;
 }
 

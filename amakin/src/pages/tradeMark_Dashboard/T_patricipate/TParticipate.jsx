@@ -5,8 +5,8 @@ import "./Tparticipate.css";
 import { ResponsiveContainer, Tooltip, Treemap } from 'recharts';
 
 const TParticipate = () => {
-  const [events, setEvents] = useState([]);
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [exhibitions, setexhibitions] = useState([]);
+  const [selectedexhibition, setSelectedexhibition] = useState(null);
   const [products, setProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [representatives, setRepresentatives] = useState([]);
@@ -14,22 +14,22 @@ const TParticipate = () => {
   const [selectedBooth, setSelectedBooth] = useState(null);
   const [data, setData] = useState([]);
 
-  // Fetch active events
+  // Fetch active exhibitions
   useEffect(() => {
-    const fetchEvents = async () => {
+    const fetchexhibitions = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/event/index_active', {
+        const response = await axios.get('http://127.0.0.1:8000/api/exhibition/index_active', {
           headers: {
             Accept: "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-        setEvents(response.data.data);
+        setexhibitions(response.data.data);
       } catch (error) {
-        console.error("Error fetching events:", error);
+        console.error("Error fetching exhibitions:", error);
       }
     };
-    fetchEvents();
+    fetchexhibitions();
   }, []);
 
   // Fetch representatives
@@ -68,10 +68,10 @@ const TParticipate = () => {
     fetchProducts();
   }, []);
 
-  // Fetch booths for the selected event
+  // Fetch booths for the selected exhibition
   useEffect(() => {
-    if (selectedEvent && selectedEvent.booths) {
-      const booths = selectedEvent.booths.map(booth => ({
+    if (selectedexhibition && selectedexhibition.booths) {
+      const booths = selectedexhibition.booths.map(booth => ({
         name: `${booth.id}`,
         size: booth.size,
         price: booth.price,
@@ -79,9 +79,9 @@ const TParticipate = () => {
       }));
       setData(booths);
     } else {
-      setData([]); // Clear the booths data if no event is selected
+      setData([]); // Clear the booths data if no exhibition is selected
     }
-  }, [selectedEvent]);
+  }, [selectedexhibition]);
 
   const handleProductChange = (selectedOptions) => {
     // Initialize selected products with default quantity of 1
@@ -104,7 +104,7 @@ const TParticipate = () => {
   };
 
   const handleSubmit = async () => {
-    if (!selectedEvent || !selectedBooth) {
+    if (!selectedexhibition || !selectedBooth) {
       return;
     }
 
@@ -120,7 +120,7 @@ const TParticipate = () => {
 
     try {
       console.log(participationData)
-      const response = await axios.post(`http://127.0.0.1:8000/api/event/${selectedEvent.value}/participate`, participationData, {
+      const response = await axios.post(`http://127.0.0.1:8000/api/exhibition/${selectedexhibition.value}/participate`, participationData, {
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -154,13 +154,13 @@ const TParticipate = () => {
       <div className="T_header">Participate application</div>
       <div className="boxes">
         <div className="box box1">
-          <h3>Choose the event you want to participate in:</h3>
+          <h3>Choose the exhibition you want to participate in:</h3>
           <Select
             className="custom-select-container"
             classNamePrefix="custom-select"
-            options={events.map(event => ({ value: event.id, label: event.name, booths: event.booths }))}
-            onChange={setSelectedEvent}
-            placeholder="Select Event"
+            options={exhibitions.map(exhibition => ({ value: exhibition.id, label: exhibition.name, booths: exhibition.booths }))}
+            onChange={setSelectedexhibition}
+            placeholder="Select exhibition"
           />
         </div>
         <div className="box box2">
@@ -205,13 +205,13 @@ const TParticipate = () => {
           <Select
             className="custom-select-container"
             classNamePrefix="custom-select"
-            options={(selectedEvent?.booths || []).map(booth => ({ value: booth.id, label: booth.id }))}
+            options={(selectedexhibition?.booths || []).map(booth => ({ value: booth.id, label: booth.id }))}
             onChange={setSelectedBooth}
             placeholder="Select Booth"
-            isDisabled={!selectedEvent}  // Disable until an event is selected
+            isDisabled={!selectedexhibition}  // Disable until an exhibition is selected
           />
           { 
-            selectedEvent && 
+            selectedexhibition && 
             <div className="chart">
               <ResponsiveContainer width="99%" height="100%">
                 <Treemap
@@ -230,7 +230,7 @@ const TParticipate = () => {
         </div>
         <div className="box box4">
           <h2>Send your participation application:</h2>
-          <button onClick={handleSubmit} disabled={!selectedEvent || !selectedBooth}>Send</button>
+          <button onClick={handleSubmit} disabled={!selectedexhibition || !selectedBooth}>Send</button>
         </div>
       </div>
     </div>

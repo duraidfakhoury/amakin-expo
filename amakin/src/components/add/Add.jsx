@@ -7,7 +7,7 @@ const Add = ({ slug, columns, onAdd, setOpen, categories = [], initialData = {} 
     ...initialData,
     categories: initialData.categories || [],
   });
-  
+
   const [fileNames, setFileNames] = useState({});
 
   const handleChange = (e) => {
@@ -107,6 +107,5 @@ const Add = ({ slug, columns, onAdd, setOpen, categories = [], initialData = {} 
     </div>
   );
 };
-
 export default Add;
 

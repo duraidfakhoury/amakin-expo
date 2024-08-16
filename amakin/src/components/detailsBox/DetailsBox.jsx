@@ -1,31 +1,31 @@
 import "./detailsBox.css"
 
 const DetailsBox = (props) => {
-  const { EventDetails } = props;
-  console.log(EventDetails);
+  const { exhibitionDetails } = props;
+  console.log(exhibitionDetails);
   return (
     <div className="detailsBox">
-      <h1>Event Details</h1>
+      <h1>exhibition Details</h1>
       <div className="list">
         <div className="listItem">
-          <span className="itemTitle">Event Name: </span>
-          <span className="itemValue">{EventDetails.name}</span>
+          <span className="itemTitle">exhibition Name: </span>
+          <span className="itemValue">{exhibitionDetails.name}</span>
         </div>
         <div className="listItem">
-          <span className="itemTitle">Event Location: </span>
-          <span className="itemValue">{EventDetails.location}</span>
+          <span className="itemTitle">exhibition Location: </span>
+          <span className="itemValue">{exhibitionDetails.location}</span>
         </div>
         <div className="listItem">
-          <span className="itemTitle">Event Description: </span>
-          <span className="itemValue">{EventDetails.description}</span>
+          <span className="itemTitle">exhibition Description: </span>
+          <span className="itemValue">{exhibitionDetails.description}</span>
         </div>
         <div className="listItem">
           <span className="itemTitle">Start Date: </span>
-          <span className="itemValue">{EventDetails.start_date}</span>
+          <span className="itemValue">{exhibitionDetails.start_date}</span>
         </div>
         <div className="listItem">
           <span className="itemTitle">End Date: </span>
-          <span className="itemValue">{EventDetails.end_date}</span>
+          <span className="itemValue">{exhibitionDetails.end_date}</span>
         </div>
       </div>
     </div>

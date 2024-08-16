@@ -8,9 +8,9 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const columns = (handleEventClick) => [
   { field: "id", headerName: "ID", width: 90 },
-  { field: "name", headerName: "Event Name", width: 200 },
-  { field: "location", headerName: "Event Location", width: 250 },
-  { field: "description", headerName: "Event Description", width: 350 },
+  { field: "name", headerName: "exhibition Name", width: 200 },
+  { field: "location", headerName: "exhibition Location", width: 250 },
+  { field: "description", headerName: "exhibition Description", width: 350 },
   { field: "start_date", headerName: "Start Date", width: 200 },
   { field: "end_date", headerName: "End Date", width: 200 },
   {
@@ -31,38 +31,38 @@ const columns = (handleEventClick) => [
 ];
 
 const Events = () => {
-  const [events, setEvents] = useState([]);
+  const [exhibitions, setexhibitions] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchEvents = async () => {
+    const fetchexhibitions = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/event/index", {
+        const response = await axios.get("http://127.0.0.1:8000/api/exhibition/index", {
           headers: {
             Accept: "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-        setEvents(response.data.data); // Assuming the events are in the 'data' key
+        setexhibitions(response.data.data); // Assuming the exhibitions are in the 'data' key
       } catch (error) {
-        console.error("Error fetching events:", error);
+        console.error("Error fetching exhibitions:", error);
       }
     };
 
-    fetchEvents();
+    fetchexhibitions();
   }, []);
   
-  const handleEventClick = (eventId) => {
-    navigate(`/mainPage/Event/${eventId}`);
+  const handleEventClick = (exhibitionId) => {
+    navigate(`/mainPage/exhibition/${exhibitionId}`);
   };
 
   return (
-    <div className="events">
+    <div className="exhibitions">
       <div className="info">
-        <h1>Events</h1>
+        <h1>exhibitions</h1>
       </div>
       <div className="table">
-        <DataTable columns={columns(handleEventClick)} rows={events} />
+        <DataTable columns={columns(handleEventClick)} rows={exhibitions} />
       </div>
     </div>
   );

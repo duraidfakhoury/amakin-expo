@@ -1,92 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Thome.css" ;
 import { Link, useNavigate } from "react-router-dom";
-
-const ended= [
-    { 
-        eventid : "11",
-        eventName:"the first",
-        end_date:"2024-12-5"
-    },
-    {
-        eventid : "11",
-        eventName:"the first",
-        end_date:"2024-12-5"
-    },{
-        eventid : "11",
-        eventName:"the first",
-        end_date:"2024-12-5"
-    },{
-        eventid : "11",
-        eventName:"the first",
-        end_date:"2024-12-5"
-    },{
-        eventid : "11",
-        eventName:"the first",
-        end_date:"2024-12-5"
-    },
-    {
-        eventid : "11",
-        eventName:"the first",
-        end_date:"2024-12-5"
-    },
-    {
-        eventid : "11",
-        eventName:"the first",
-        end_date:"2024-12-5"
-    },
-    {
-        eventid : "11",
-        eventName:"the first",
-        end_date:"2024-12-5"
-    },
-]
-
-const active= [
-    { 
-        eventid : "11",
-        eventName:"the first",
-        start_date:"2024-12-5"
-    },
-    {
-        eventid : "11",
-        eventName:"the first",
-        start_date:"2024-12-5"
-    },{
-        eventid : "11",
-        eventName:"the first",
-        start_date:"2024-12-5"
-    },{
-        eventid : "11",
-        eventName:"the first",
-        start_date:"2024-12-5"
-    },{
-        eventid : "11",
-        eventName:"the first",
-        start_date:"2024-12-5"
-    },
-    {
-        eventid : "11",
-        eventName:"the first",
-        start_date:"2024-12-5"
-    },
-    {
-        eventid : "11",
-        eventName:"the first",
-        start_date:"2024-12-5"
-    },
-    {
-        eventid : "11",
-        eventName:"the first",
-        start_date:"2024-12-5"
-    },
-]
+import axios from "axios";
 
 const THome = () => {
-    const [endedEvents, setEndedEvents] = useState([]);
-    const [activeEvents, setActiveEvents] = useState([]);
+    const [endedexhibitions, setEndedexhibitions] = useState([]);
+    const [activeexhibitions, setActiveexhibitions] = useState([]);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    useEffect(() => {
+    const fetch_ended = async () => {
+        try {
+          const response = await axios.get("http://127.0.0.1:8000/api/exhibition_participate/index_ended", {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
+          setEndedexhibitions(response.data.data); 
+          
+        } catch (error) {
+          console.error("Error fetching exhibitions:", error);
+        }
+      };
+      const fetch_active = async () => {
+        try {
+          const response = await axios.get("http://127.0.0.1:8000/api/exhibition_participate/index_active", {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
+          setActiveexhibitions(response.data.data); 
+          
+        } catch (error) {
+          console.error("Error fetching exhibitions:", error);
+        }
+      };
+      fetch_active();
+      fetch_ended();
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -94,36 +47,36 @@ const THome = () => {
 
   return (
     <div className="t_home">
-        <div className="box box1">
-            <div className="events-list">
-            <h2>Recent Participations (Ended Events)</h2>
+        <div className="bbox bbox1">
+            <div className="exhibitions-list">
+            <h2>Recent Participations (Ended exhibitions)</h2>
             <ul>
-            {ended.map(event => (
-                <li key={event.id} className="event-item">
-                    <span>{event.eventName}</span>
-                    <span>{new Date(event.end_date).toLocaleDateString()}</span>
+            {endedexhibitions.map(exhibition => (
+                <li key={exhibition.id} className="exhibition-item">
+                    <span>{exhibition.exhibition.name}</span>
+                    <span>{new Date(exhibition.exhibition.end_date).toLocaleDateString()}</span>
                 </li>
                 ))}
             </ul>
             </div>
         </div>
-        <div className="box box2">
-            <div className="events-list">
-            <h2>Recent Participations (active Events)</h2>
+        <div className="bbox bbox2">
+            <div className="exhibitions-list">
+            <h2>Recent Participations (active exhibitions)</h2>
             <ul>
-            {active.map(event => (
-                <li key={event.id} className="event-item">
-                <Link to={`/TmainPage/Event/${event.id}`}>{event.eventName}</Link>
-                <span>{new Date(event.start_date).toLocaleDateString()}</span>
+            {activeexhibitions.map(exhibition => (
+                <li key={exhibition.id} className="exhibition-item">
+                <Link to={`/TmainPage/exhibition/${exhibition.id}`}>{exhibition.exhibition.name}</Link>
+                <span>{new Date(exhibition.exhibition.start_date).toLocaleDateString()}</span>
               </li>
                 ))}
             </ul>
             </div>
         </div>
-        <div className="box box3">
+        <div className="bbox bbox3">
             <img src="./logo.svg" alt="" />
             <div className="info">
-            <p>Want to particpate in a new event</p>
+            <p>Want to particpate in a new exhibition</p>
             <button onClick={()=>navigate('/TmainPage/participate')}>participate</button>
             </div>
         </div>

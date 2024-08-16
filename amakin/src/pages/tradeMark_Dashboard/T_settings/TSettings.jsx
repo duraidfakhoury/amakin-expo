@@ -1,5 +1,5 @@
 import { ThemeContext } from "../../../context/ThemeContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "./Tsettings.css";
 import "../../../styles/variables.css";
 import ToggleSlider from "../../../components/toggleSlider/ToogleSlider";
@@ -14,6 +14,7 @@ const TSettings = () => {
   const logoutAction = (e) => {
     e.preventDefault();
     localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
     navigate("/");
   }
   return (

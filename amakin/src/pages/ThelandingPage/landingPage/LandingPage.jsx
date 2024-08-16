@@ -7,7 +7,7 @@ const LandingPage = () => {
     <div className="landingPage">
         <Header />
         <Outlet />
-        <Footer className ="footer" data = "made with love"/>
+        <Footer className ="footer" data = "@all Rights Reserved"/>
     </div>
   )
 }

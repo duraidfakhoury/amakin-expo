@@ -1,9 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { FaUser } from "react-icons/fa6";
-import { FaLock } from "react-icons/fa";
 import "./login.css";
 import { useState } from "react";
-import axios from "axios";
 import InputField from "../../../components/inputField/InputField";
 
 const Login = (props) => {

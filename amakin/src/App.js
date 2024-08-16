@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import { ThemeContext } from "./context/ThemeContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import axios from "axios";
 import LandingPage from "./pages/ThelandingPage/landingPage/LandingPage";
 import Login from "./pages/ThelandingPage/Login/login";
@@ -32,10 +32,11 @@ import TProfile from "./pages/tradeMark_Dashboard/T_profile/TProfile";
 import RouteChangeTracker from "./components/routeChangeTracker/RouteChangeTracker";
 import Verify from "./pages/verify/Verify";
 import Wait from "./pages/wait/Wait";
+import Transfer from "./pages/adminDashbord/transfer/Transfer";
+import Main from "./pages/ThelandingPage/main/Main";
 
 function App() {
   const { theme } = useContext(ThemeContext);
-  const [loggedData, setLoggedData] = useState();
   const onLogin = async (loginData) => {
     const response = await axios.post(
       "http://127.0.0.1:8000/api/user/store",
@@ -51,7 +52,6 @@ function App() {
       const { token, data: userData } = data;
       localStorage.setItem("token", token.accessToken);
       localStorage.setItem("refreshToken", token.refreshToken);
-      setLoggedData(userData);
       return response;
     } else return response;
   };
@@ -89,6 +89,10 @@ function App() {
               path : "AboutUs" ,
               element : <AboutUs />
             },
+            {
+              path :"",
+              element:<Main/>
+            }
             
           ]
         },
@@ -106,7 +110,7 @@ function App() {
                 element: <Profile {...singleUser}/>,
               },
               {
-                path: "events",
+                path: "exhibitions",
                 element: <Events />,
               },
               {
@@ -114,7 +118,7 @@ function App() {
                 element: <Categories />,
               },
               {
-                path: "Event/:eventId",
+                path: "exhibition/:exhibitionId",
                 element: <Event />,
               },
               {
@@ -126,7 +130,7 @@ function App() {
                 element :<SignUp />
               },
               {
-                path : "createEvent",
+                path : "createexhibition",
                 element : <CreateEvente/>
               }
             ]
@@ -145,11 +149,11 @@ function App() {
                 element: <TProfile {...singleUser} />,
               },
               {
-                path: "events",
+                path: "exhibitions",
                 element: <TEvents />,
               },
               {
-                path: "Event/:eventId",
+                path: "exhibition/:exhibitionId",
                 element: <TEvent />,
               },
               {
@@ -194,7 +198,7 @@ function App() {
             element: <Profile {...singleUser}/>,
           },
           {
-            path: "events",
+            path: "exhibitions",
             element: <Events />,
           },
           {
@@ -202,7 +206,7 @@ function App() {
             element: <Categories />,
           },
           {
-            path: "Event/:eventId",
+            path: "exhibition/:exhibitionId",
             element: <Event />,
           },
           {
@@ -214,8 +218,12 @@ function App() {
             element :<SignUp />
           },
           {
-            path : "createEvent",
+            path : "createexhibition",
             element : <CreateEvente/>
+          },
+          {
+            path : "transfer",
+            element : <Transfer/>
           }
         ]
     }
@@ -233,11 +241,11 @@ function App() {
             element: <TProfile {...singleUser} />,
           },
           {
-            path: "events",
+            path: "exhibitions",
             element: <TEvents />,
           },
           {
-            path: "Event/:eventId",
+            path: "exhibition/:exhibitionId",
             element: <TEvent />,
           },
           {

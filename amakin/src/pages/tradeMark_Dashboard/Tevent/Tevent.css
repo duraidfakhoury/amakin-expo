@@ -5,7 +5,7 @@
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(180px,auto);
 
-
+    min-height: 87.5vh;
     .box{
         padding: 20px;
         border-radius: 10px;
@@ -15,17 +15,102 @@
         grid-column: span 1 ;
         grid-row: span 2;
     }
-
+    .box2{
+        grid-column: span 2 ;
+        grid-row: span 2;
+    }
     .box4{
         grid-column: span 1 ;
         grid-row: span 3;
+        
+        ul{
+            margin: 20px 10px 10px 10px;
+            li{
+                margin: 10px;
+                padding: 10px;
+                background-color: var(--soft-bg);
+                display : flex;
+                justify-content: space-between;
+                font-size: 20px;
+                border-radius: 6px;
+            }
+        }
     }
     .box7{
         grid-column: span 1 ;
         grid-row: span 2;
+        ul{
+            margin: 20px 10px 10px 10px;
+            li{
+                margin: 10px;
+                padding: 10px;
+                background-color: var(--soft-bg);
+                display : flex;
+                justify-content: space-between;
+                font-size: 20px;
+                border-radius: 6px;
+            }
+        }
     }
     .box8{
         grid-column: span 2 ;
         grid-row: span 2;
+        span{
+            margin: 5px;
+            font-size: 24px;
+            color: var(--main-color);
+        };
+        .chart{
+            width: 100%;
+            height: 300px ;
+            margin: 10px;
+        }
+    }
+    .box9{
+        padding: 0 20px 20px 20px;
+        grid-column: span 1 ;
+        grid-row: span 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .invoice-status{
+            display: flex;
+            justify-content:space-between ;
+            font-size: 18px;
+            color: var(--main-color);
+            .stat-texts{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
     }
 }
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: var(--main-bg);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    color: var(--main-color);
+  }
+  
+  .popup-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  

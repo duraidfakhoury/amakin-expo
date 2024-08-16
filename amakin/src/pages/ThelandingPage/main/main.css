@@ -1,0 +1,104 @@
+@import "../../../styles/variables.css";
+.main {
+    font-family: Arial, sans-serif;
+    background-color:var(--main-bg);
+    color: var(--main-color);
+    min-height: 86vh;
+  }
+  
+  #hero {
+    text-align: center;
+    background-color: var(--main-bg);
+    color: var(--main-color);
+    padding: 100px 20px;
+  }
+  section{
+    background-color: var(--main-bg);
+    h2{
+        margin: 20px;
+    }
+  }
+  #hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+
+  }
+  
+  #hero p {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  #hero button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: var(--accent-color);
+    background-color: var(--main-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #hero button:hover {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+  }
+  #exibitions{
+    background-color: var(--main-bg);
+  }
+  
+  .services-cards, .exibition-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: var(--main-bg);
+  }
+  
+  .card, .exibition-item, .testimonial {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0px 10px var(--soft-bg);
+    margin: 10px;
+    background-color: var(--main-bg);
+    text-align: center;
+    width: 30%;
+    color: var(--main-color);
+  }
+  #download-app, #join-us {
+    text-align: center;
+    padding: 50px 20px;
+    margin: 30px 0;
+    background-color: var(--soft-bg);
+    border-radius: 8px;
+}
+
+#download-app h2, #join-us h2 {
+    font-size: 36px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+#download-app p, #join-us p {
+    font-size: 20px;
+    color: var(--main-color);
+    margin-bottom: 20px;
+}
+
+#download-app button, #join-us button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: var(--accent-color);
+    background-color: var(--main-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#download-app button:hover, #join-us button:hover {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+}
+
+  

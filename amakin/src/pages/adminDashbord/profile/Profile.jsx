@@ -34,11 +34,12 @@ const Profile = () => {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
-                params: { take: 2 }  // Pass 'take' as a query parameter
+                params: { take: 10 }  // Pass 'take' as a query parameter
             });
             const { status, data } = response;
             if (status === 200) {
-                setActivities(data.data); // Correctly access the activities data
+                setActivities(data.data);
+                console.log(data.data) // Correctly access the activities data
             } else {
                 setError("Failed to fetch activities");
             }
@@ -101,8 +102,8 @@ const Profile = () => {
                         {activities.map((activity, index) => (
                             <li key={index}>
                                 <div>
-                                    <p>{activity.text}</p>
-                                    <time>{activity.time}</time>
+                                    <p>{activity.description}</p>
+                                    <time>{activity.created_at}</time>
                                 </div>
                             </li>
                         ))}

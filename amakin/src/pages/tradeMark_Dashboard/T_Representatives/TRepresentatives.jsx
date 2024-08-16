@@ -229,8 +229,7 @@ const TRepresnetatives = () => {
             slug={isEdit ? 'Edit Representative' : 'Add New Representative'}
             columns={isEdit ? editRep_columns : addRep_columns}
             setOpen={setOpen}
-            onAdd={isEdit ? handleUpdateRep : handleAddRep}
-            initialData={isEdit ? currentRep : null} // Pass current representative data for editing
+            onAdd={isEdit ? handleUpdateRep : handleAddRep}  
           />
         )}
       </div>

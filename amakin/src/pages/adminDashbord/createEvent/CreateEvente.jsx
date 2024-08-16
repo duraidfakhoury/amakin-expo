@@ -8,26 +8,25 @@ import dayjs from 'dayjs';
 const CreateEvent = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [eventName, setEventName] = useState('');
+  const [exhibitionName, setexhibitionName] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [error, setError] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [responseData, setResponseData] = useState(null);
 
   const formData = {
-    name: eventName,
+    name: exhibitionName,
     location: location,
     description: description,
     start_date: startDate ? dayjs(startDate).format('YYYY-MM-DD') : null,
     end_date: endDate ? dayjs(endDate).format('YYYY-MM-DD') : null,
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (exhibition) => {
+    exhibition.preventDefault();
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8000/api/event/create',
+        'http://127.0.0.1:8000/api/exhibition/create',
         formData,
         {
           headers: {
@@ -40,11 +39,10 @@ const CreateEvent = () => {
       const { status, data } = response;
 
       if (status === 200) {
-        console.log('Event creation successful:', data);
-        setResponseData(data);
+        console.log('exhibition creation successful:', data);
         setShowModal(true);  // Show the modal
         // Clear the form
-        setEventName('');
+        setexhibitionName('');
         setLocation('');
         setDescription('');
         setStartDate(null);
@@ -56,7 +54,7 @@ const CreateEvent = () => {
     } catch (error) {
       if (error.response) {
         console.error('Error response:', error.response);
-        setError('There was an error creating the event: ' + (error.response.data.message || error.message));
+        setError('There was an error creating the exhibition: ' + (error.response.data.message || error.message));
       } else if (error.request) {
         console.error('Error request:', error.request);
         setError('No response received: ' + error.message);
@@ -73,25 +71,25 @@ const CreateEvent = () => {
   };
 
   return (
-    <div className='createEvent'>
+    <div className='createexhibition'>
       <div className="createDesc">
         <img src="../undraw_building_blocks_re_5ahy.svg" alt="" />
         <div className="text">
-          <h1>Create an Event</h1>
-          <span>Add the basic information of the event in this form </span>
-          <span>You can specify more detals for the event int event details page once you create it.</span>
+          <h1>Create an exhibition</h1>
+          <span>Add the basic information of the exhibition in this form </span>
+          <span>You can specify more detals for the exhibition int exhibition details page once you create it.</span>
           <span>Make sure you fill it up with the right data.</span>
         </div>
       </div>
       <div className="createForm">
         <span className="Etitle">Fill Up The Information.</span>
-        <form className='eventForm' onSubmit={handleSubmit}>
+        <form className='exhibitionForm' onSubmit={handleSubmit}>
           <div className="EFormItem">
             <InputField 
-              placeholder='Event Name'
+              placeholder='exhibition Name'
               type='text'
-              value={eventName}
-              onChange={(e) => setEventName(e.target.value)}
+              value={exhibitionName}
+              onChange={(e) => setexhibitionName(e.target.value)}
             />
           </div>
           <div className="EFormItem">
@@ -130,8 +128,8 @@ const CreateEvent = () => {
           <button type='submit'>Create</button>
         </form>
       </div>
-      <AlertModel show={showModal} handleClose={handleCloseModal} title="Event Created sucsesfully">
-        <p>You can specify more details to your Event through the dashBoard.</p>
+      <AlertModel show={showModal} handleClose={handleCloseModal} title="exhibition Created sucsesfully">
+        <p>You can specify more details to your exhibition through the dashBoard.</p>
       </AlertModel>
       
     </div>

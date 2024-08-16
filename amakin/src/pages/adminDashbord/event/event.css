@@ -1,31 +1,45 @@
 @import "../../../styles/variables.css";
-.event {
+.exhibitiont {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(180px,auto);
 
-
-    .box{
-        padding: 20px;
+    .booxx{
+        padding: 9px 20px;
         border-radius: 10px;
         border: 1px solid var(--soft-bg);
     }
-    .box1{
+    .boox1{
         grid-column: span 1 ;
         grid-row: span 2;
     }
-
-    .box4{
+    .boox2 {
         grid-column: span 1 ;
-        grid-row: span 3;
+        grid-row: span 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        btn-cont{
+            display: flex;
+            justify-content: end;
+        }
+        
     }
-    .box7{
+    .boox4{
         grid-column: span 1 ;
-        grid-row: span 2;
+        grid-row: span 4;
     }
-    .box8{
+    .boox7{
         grid-column: span 2 ;
         grid-row: span 2;
     }
+    .boox8{
+        grid-column: span 1 ;
+        grid-row: span 2;
+    }
+}
+.loading{
+    min-height: 87.5vh;
 }

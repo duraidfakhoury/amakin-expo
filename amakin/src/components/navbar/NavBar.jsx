@@ -1,8 +1,4 @@
 import "./navBar.css"
-import { IoIosSearch } from "react-icons/io";
-import { AiOutlineAppstore } from "react-icons/ai";
-import { IoMdExpand } from "react-icons/io";
-import { IoNotificationsOutline } from "react-icons/io5";
 const Navbar = (props) => {
     return <div className="navBar">
         <div className="logo">

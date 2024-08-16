@@ -8,10 +8,10 @@ const Home = () => {
                 <img src="/logo.svg" alt="" />
             </div>
             <div className="boxx boxx2">
-                <button onClick={()=>navigate('events')}>events</button>
+                <button onClick={()=>navigate('exhibitions')}>exhibitions</button>
             </div>
             <div className="boxx boxx3">
-                <button onClick={()=>navigate('createEvent')}>create event</button>
+                <button onClick={()=>navigate('createexhibition')}>create exhibition</button>
             </div>
             <div className="boxx boxx4">
                 <button onClick={()=>navigate('categories')}>categories</button>

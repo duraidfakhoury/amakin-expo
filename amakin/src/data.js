@@ -1,6 +1,6 @@
 import { GoHome } from "react-icons/go";
 import { CgProfile } from "react-icons/cg";
-import { PiUsersFourFill } from "react-icons/pi";
+import { TbTransfer } from "react-icons/tb";
 import { AiOutlineProduct } from "react-icons/ai";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdPersonAdd } from "react-icons/io";
@@ -54,8 +54,8 @@ export const menu = [
       listItems: [
         {
           id: 1,
-          title: "Events",
-          url: "events",
+          title: "exhibitions",
+          url: "exhibitions",
           icon: <AiOutlineProduct/>,
         },
         {
@@ -72,8 +72,8 @@ export const menu = [
       listItems: [
         {
           id: 1,
-          title: "Create Event",
-          url: "createEvent",
+          title: "Create exhibition",
+          url: "createexhibition",
           icon: <IoCreateOutline/>,
         },
         {
@@ -81,6 +81,12 @@ export const menu = [
           title: "Add Admin",
           url: "signUp",
           icon: <IoMdPersonAdd/>,
+        },
+        {
+          id: 3,
+          title: "Transfer",
+          url: "transfer",
+          icon: <TbTransfer/>,
         },
       ],
     },

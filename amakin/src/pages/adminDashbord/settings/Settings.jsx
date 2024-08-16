@@ -1,5 +1,5 @@
 import { ThemeContext } from "../../../context/ThemeContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "./settings.css";
 import "../../../styles/variables.css";
 import ToggleSlider from "../../../components/toggleSlider/ToogleSlider";

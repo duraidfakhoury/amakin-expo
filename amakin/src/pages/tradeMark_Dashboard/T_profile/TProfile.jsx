@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Tprofile.css";
 
-
-
-const TProfile = (props) => {
+const TProfile = () => {
     const [profileData, setProfileData] = useState(null);
     const [error, setError] = useState("");
-    const [activities , setActivities ] = useState([]);
+    const [activities, setActivities] = useState([]);
+    const [balance, setBalance] = useState();
 
+    // Fetch profile data
     const getProfileData = async () => {
         try {
             const response = await axios.get('http://127.0.0.1:8000/api/me', {
@@ -19,7 +19,7 @@ const TProfile = (props) => {
             });
             const { status, data } = response;
             if (status === 200) {
-                setProfileData(data.data); // Correctly access the user data
+                setProfileData(data.data);
             } else {
                 setError("Failed to fetch profile data");
             }
@@ -29,12 +29,14 @@ const TProfile = (props) => {
         }
     };
 
+    // Fetch activities
     const getActivities = async () => {
         const number = {
-            take : 10
-        }
+            take: 10
+        };
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/activity/index',number , {
+            const response = await axios.get('http://127.0.0.1:8000/api/activity/index', {
+                params: number,
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -42,10 +44,9 @@ const TProfile = (props) => {
             });
             const { status, data } = response;
             if (status === 200) {
-                setActivities(data.data); // Correctly access the user data
-                console.log (activities);
+                setActivities(data.data);
             } else {
-                setError("Failed to activities");
+                setError("Failed to fetch activities");
             }
         } catch (error) {
             setError("Failed to fetch activities");
@@ -53,20 +54,37 @@ const TProfile = (props) => {
         }
     };
 
+    // Fetch wallet balance
+    const fetchWalletBalance = async () => {
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/user/wallet`, {
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+            const data = response.data.data;
+            setBalance(data.amount);
+        } catch (error) {
+            console.error('Error fetching wallet balance:', error);
+        }
+    };
+
+    // useEffect to fetch all data on component mount
     useEffect(() => {
         getProfileData();
         getActivities();
-    }, []);
-
-     
+        fetchWalletBalance();
+    }, []);  // Empty dependency array to run effect only on mount
 
     return (
         <div className="Tprofile">
             <div className="view">
                 <div className="info">
                     <div className="topInfo">
-                        {/* Render image only if profileData and img exist */}
-                        {profileData && profileData.image && <img src={`http://127.0.0.1:8000${profileData.image}`} alt="Profile" />}
+                        {profileData && profileData.image && (
+                            <img src={`http://127.0.0.1:8000${profileData.image}`} alt="Profile" />
+                        )}
                         <h1>Your Profile</h1>
                     </div>
                     <div className="details">
@@ -89,7 +107,7 @@ const TProfile = (props) => {
                             </span>
                         </div>
                         <div className="item">
-                            <span className="itemTitle">TradeMrk Name: </span>
+                            <span className="itemTitle">Trademark Name: </span>
                             <span className="itemValue">
                                 {profileData ? profileData.trademark_name : "Loading..."}
                             </span>
@@ -106,11 +124,11 @@ const TProfile = (props) => {
                 <hr />
                 <div className="wallet">
                     <div className="wallet-info">
-                        <h2>Current balance</h2>
-                        <span>200.00$</span>
+                        <h2>Current Balance</h2>
+                        <span>{balance}$</span>
                     </div>
                     <div className="more">
-                        <p>view your transactions</p>
+                        <p>View your transactions</p>
                         <button>View</button>
                     </div>
                 </div>
@@ -129,7 +147,7 @@ const TProfile = (props) => {
                         ))}
                     </ul>
                 ) : (
-                    <p >No activities to show</p>
+                    <p>No activities to show</p>
                 )}
             </div>
         </div>

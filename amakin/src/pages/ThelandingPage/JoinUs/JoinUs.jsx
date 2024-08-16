@@ -88,8 +88,9 @@ const JoinUs = () => {
         <div className="text">
           <h1>Do you want to join us</h1>
           <span>Send us your information and the admin will review your order.</span>
-          <span>This form is only sent when you want to participate in an event and do not have an account.</span>
+          <span>This form is only sent when you want to participate in an exhibition and do not have an account.</span>
           <span>You will receive an email with your login credentials after approval.</span>
+          <span>Already have an account , Continue to the login page.</span>
         </div>
       </div>
       <div className="joinUsForm">

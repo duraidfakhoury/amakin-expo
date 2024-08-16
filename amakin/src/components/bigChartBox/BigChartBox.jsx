@@ -14,13 +14,13 @@ const BigChartBox = () => {
   const [data, setData] = useState([]);
   const [addBooth, setAddBooth] = useState(false);
   const [selectedBooth, setSelectedBooth] = useState(null);
-  const {eventId } = useParams();
+  const {exhibitionId } = useParams();
   const [showModel, setShowModel] = useState(false);
 
   useEffect(() => {
     const fetchBooths = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/booth/event/${eventId}/index`, {
+        const response = await axios.get(`http://127.0.0.1:8000/api/booth/exhibition/${exhibitionId}/index`, {
           headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -40,11 +40,11 @@ const BigChartBox = () => {
     };
 
     fetchBooths();
-  }, [eventId]);
+  }, [exhibitionId]);
 
   const handleAddBooth = async (newBooth) => {
     try {
-      const response = await axios.post(`http://127.0.0.1:8000/api/booth/event/${eventId}/create`, newBooth, {
+      const response = await axios.post(`http://127.0.0.1:8000/api/booth/exhibition/${exhibitionId}/create`, newBooth, {
         headers: {
           Accept: 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -52,7 +52,7 @@ const BigChartBox = () => {
       });
 
       if (response.status === 200) {
-        const updatedResponse = await axios.get(`http://127.0.0.1:8000/api/booth/event/${eventId}/index`, {
+        const updatedResponse = await axios.get(`http://127.0.0.1:8000/api/booth/exhibition/${exhibitionId}/index`, {
           headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${localStorage.getItem('token')}`,
