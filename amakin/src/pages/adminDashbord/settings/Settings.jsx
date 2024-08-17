@@ -14,6 +14,8 @@ const Settings = () => {
   const logoutAction = (e) => {
     e.preventDefault();
     localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
+
     navigate("/");
   }
   return (

@@ -5,7 +5,7 @@ import './transfer.css';  // يمكنك إنشاء ملف CSS للصفحة إذ�
 
 const Transfer = () => {
   const [amount, setAmount] = useState('');
-  const [email , setEmail] = useState();
+  const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -15,7 +15,8 @@ const Transfer = () => {
     const formData = {
       email: email,
       amount: amount
-    }
+    };
+
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/transfer/create',formData, 
        {
@@ -25,7 +26,8 @@ const Transfer = () => {
         },
       });
 
-      if (response.data.success) {
+      // التحقق من استجابة API
+      if (response.data.message === "Your action has been done") {
         setMessage('Account topped up successfully!');
       } else {
         setMessage('Failed to top up account. Please try again.');
@@ -41,23 +43,23 @@ const Transfer = () => {
   return (
     <div className="top-up-container">
       <div className="top-up-wrapper">
-      <h2>Top Up Account</h2>
-      <InputField
-        placeholder='Email'
-        type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <InputField
-        placeholder='Amount'
-        type="number"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
-      <button onClick={handleTopUp} disabled={loading || !amount}>
-        {loading ? 'Processing...' : 'Top Up'}
-      </button>
-      {message && <p>{message}</p>}
+        <h2>Top Up Account</h2>
+        <InputField
+          placeholder='Email'
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <InputField
+          placeholder='Amount'
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+        <button onClick={handleTopUp} disabled={loading || !amount || !email}>
+          {loading ? 'Processing...' : 'Top Up'}
+        </button>
+        {message && <p>{message}</p>}
       </div>
     </div>
   );

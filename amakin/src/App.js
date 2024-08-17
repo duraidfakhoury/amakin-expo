@@ -19,11 +19,9 @@ import THome from "./pages/tradeMark_Dashboard/T_home/THome";
 import TProducts from "./pages/tradeMark_Dashboard/T_products/TProducts";
 import TProduct from "./pages/tradeMark_Dashboard/T_product/TProduct";
 import TRepresentatives from "./pages/tradeMark_Dashboard/T_Representatives/TRepresentatives";
-import TUser from "./pages/tradeMark_Dashboard/T_user/TUser";
 import TSettings from "./pages/tradeMark_Dashboard/T_settings/TSettings";
 import TEvents from "./pages/tradeMark_Dashboard/T_events/TEvents";
 import Profile from "./pages/adminDashbord/profile/Profile";
-import { singleUser } from "./data";
 import CreateEvente from "./pages/adminDashbord/createEvent/CreateEvente";
 import TParticipate from "./pages/tradeMark_Dashboard/T_patricipate/TParticipate";
 import Categories from "./pages/adminDashbord/categories/Categories";
@@ -34,6 +32,8 @@ import Verify from "./pages/verify/Verify";
 import Wait from "./pages/wait/Wait";
 import Transfer from "./pages/adminDashbord/transfer/Transfer";
 import Main from "./pages/ThelandingPage/main/Main";
+import TradeMarks from "./pages/adminDashbord/tradeMarks/TradeMarks";
+import TradeMark from "./pages/adminDashbord/tradeMark/TradeMark";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -107,11 +107,19 @@ function App() {
               },
               {
                 path: "profile",
-                element: <Profile {...singleUser}/>,
+                element: <Profile />,
               },
               {
                 path: "exhibitions",
                 element: <Events />,
+              },
+              {
+                path: "tradeMarks",
+                element: <TradeMarks />,
+              },
+              {
+                path: "tradeMarks/:tradeMarkId",
+                element: <TradeMark />,
               },
               {
                 path: "categories",
@@ -146,7 +154,7 @@ function App() {
               },
               {
                 path: "profile",
-                element: <TProfile {...singleUser} />,
+                element: <TProfile  />,
               },
               {
                 path: "exhibitions",
@@ -163,10 +171,6 @@ function App() {
               {
                 path: "products",
                 element: <TProducts />,
-              },
-              {
-                path: "users/:id",
-                element: <TUser />,
               },
               {
                 path: "products/:productId",
@@ -195,7 +199,7 @@ function App() {
           },
           {
             path: "profile",
-            element: <Profile {...singleUser}/>,
+            element: <Profile />,
           },
           {
             path: "exhibitions",
@@ -238,7 +242,7 @@ function App() {
           },
           {
             path: "profile",
-            element: <TProfile {...singleUser} />,
+            element: <TProfile />,
           },
           {
             path: "exhibitions",
@@ -255,10 +259,6 @@ function App() {
           {
             path: "products",
             element: <TProducts />,
-          },
-          {
-            path: "users/:id",
-            element: <TUser />,
           },
           {
             path: "products/:productId",
